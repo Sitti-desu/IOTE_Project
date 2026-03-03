@@ -141,3 +141,4 @@ function openProgram(evt, programName, fee, desc) {
     // เลื่อนหน้าจอไปที่ช่องราคาแบบอัตโนมัติ (Optional: ลบออกได้ถ้าไม่อยากให้มันเลื่อน)
     // document.getElementById("tuition-fee").scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
+

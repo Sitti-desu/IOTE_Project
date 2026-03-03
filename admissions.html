@@ -5,13 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admission | IoT & Information Engineering KMITL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-image: url('images/Circuit.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+        }
+        .symmetrical-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+        }
+        .formal-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px; padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+        @media (max-width: 768px) {
+            .symmetrical-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
 
-    <main class="mit-container">
+    <main class="mit-container" style="max-width: 1200px;">
         <section class="hero-section outline-border">
             <h1 class="massive-text">ADMISSION<br>2026.</h1>
             <p class="sub-hero">วิศวกรรมระบบไอโอทีและสารสนเทศ สจล.</p>

@@ -4,68 +4,94 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty | IoT Engineering</title>
+    <title>Faculty | IoT Engineering KMITL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* จัด Layout แบบ Grid ให้สวยงาม */
-        .faculty-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+        body {
+            background-image: url('images/Circuit.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
         }
-        .faculty-img {
-            width: 100px; height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
+        .formal-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px; padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
         }
     </style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
-    <h1 style="text-align: center; margin-top: 40px; color: var(--secondary-color);">คณาจารย์ภาควิชา IoT Engineering</h1>
 
-    <div id="faculty-container" class="faculty-grid">
-        <p style="text-align: center;">กำลังโหลดข้อมูล...</p>
-    </div>
+    <div id="header-placeholder"></div>
+
+    <main class="mit-container" style="max-width: 1200px; padding: 40px 20px;">
+        
+        <section class="hero-section outline-border" style="background-color: #1A1A1A; color: white; padding: 60px 40px; text-align: left; height: auto; display: block; background-image: none;">
+            <h1 class="massive-text" style="color: white; margin: 0; line-height: 1; border: none;">FACULTY.</h1>
+            <p class="sub-hero" style="color: #E0E0E0; margin-top: 15px; font-weight: 400;">คณาจารย์ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ และ ภาควิชาฟิสิกส์</p>
+            
+            <div style="margin-top: 30px; border-top: 2px solid white; padding-top: 20px;">
+                <p style="margin: 0; color: #CCCCCC; font-size: 1rem; line-height: 1.8;">
+                    <strong>COMMITMENT:</strong> มุ่งมั่นพัฒนานักศึกษาและงานวิจัยให้ล้ำหน้า สร้างบุคลากรและวิศวกรชั้นแนวหน้าของประเทศ เพื่อรับมือกับความท้าทายในยุคดิจิทัลและอุตสาหกรรม 4.0
+                </p>
+            </div>
+        </section>
+
+        <section class="outline-border formal-card" style="margin-top: 20px;">
+            <h2 class="section-title">IoT ENGINEERING</h2>
+            <div id="iot-faculty-container" class="grid-3-col" style="margin-top: 20px;">
+                <p>กำลังโหลดข้อมูล...</p>
+            </div>
+        </section>
+
+        <section class="outline-border formal-card" style="margin-top: 20px;">
+            <h2 class="section-title">PHYSICS</h2>
+            <div id="physics-faculty-container" class="grid-3-col" style="margin-top: 20px;">
+                <p>กำลังโหลดข้อมูล...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/app.js"></script>
 
     <script>
-        // ฟังก์ชันไปดูดข้อมูลจาก API (หลังบ้าน)
         async function loadFaculty() {
             try {
                 const response = await fetch('api/get_faculty.php');
                 const result = await response.json();
 
-                const container = document.getElementById('faculty-container');
-                container.innerHTML = ''; // ล้างข้อความ "กำลังโหลดข้อมูล"
+                const iotContainer = document.getElementById('iot-faculty-container');
+                const phyContainer = document.getElementById('physics-faculty-container');
+                iotContainer.innerHTML = '';
+                phyContainer.innerHTML = '';
 
                 if (result.status === 'success') {
-                    // เอาข้อมูลที่ได้มาวนลูปสร้างการ์ด HTML
                     result.data.forEach(ajarn => {
+                        // ปรับให้การ์ดอาจารย์เข้ากับธีม formal-card
                         const card = `
-                            <div class="card" style="text-align: center;">
-                                <img src="${ajarn.image_path}" class="faculty-img" onerror="this.src='https://via.placeholder.com/100'">
-                                <h3 style="color: var(--primary-color);">${ajarn.fullname}</h3>
-                                <p>${ajarn.position}</p>
-                                <p style="font-size: 0.8em; color: gray;">สาขา: ${ajarn.department}</p>
+                            <div class="outline-border formal-card" style="padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.95);">
+                                <img src="${ajarn.image_path}" onerror="this.src='https://via.placeholder.com/120'" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--accent-color);">
+                                <h3 style="font-size: 1.1rem; color: var(--text-color);">${ajarn.fullname}</h3>
+                                <p style="font-size: 0.9rem; color: #555;">${ajarn.position}</p>
                             </div>
                         `;
-                        container.innerHTML += card;
+                        if (ajarn.department === 'IoT') {
+                            iotContainer.innerHTML += card;
+                        } else {
+                            phyContainer.innerHTML += card;
+                        }
                     });
                 }
             } catch (error) {
-                console.error("เกิดข้อผิดพลาด: ", error);
+                console.error("Error:", error);
             }
         }
-
-        // สั่งให้โหลดข้อมูลทันทีที่เปิดหน้าเว็บ
         loadFaculty();
     </script>
-    
-<div id="footer-placeholder"></div>
-<script src="js/app.js"></script>
 </body>
 </html>

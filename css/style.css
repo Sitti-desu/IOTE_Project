@@ -443,3 +443,161 @@ body {
 .hero-section .vision-box {
     border-top: 2px solid #ffffff !important; 
 }
+
+/* =========================================
+   Contact Page Styles
+========================================= */
+/* Hero Section สำหรับหน้า Contact */
+.contact-hero {
+    height: 50vh;
+    /* // COMMENT: แก้ไขลิงก์รูปภาพเป็น Relative Path แล้ว (ถอยไปหาโฟลเดอร์ images) */
+    background-image: url('../images/AdobeStock_249319654-2048x892.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(44, 62, 80, 0.7); /* ใช้สีโทนกรมท่าทับรูปให้ตัวหนังสือเด่นขึ้น */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-content {
+    color: white;
+    text-align: center;
+    z-index: 1;
+}
+
+/* ส่วนกล่องข้อมูลติดต่อ */
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+    background-color: #F8F9F9;
+    flex-wrap: wrap; /* ให้ตกบรรทัดได้เมื่อจอเล็ก */
+}
+.contact-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: left; /* จัดซ้ายให้อ่านง่ายขึ้น */
+    transition: transform 0.3s ease;
+}
+.contact-card:hover {
+    transform: translateY(-5px); /* IxD: ลูกเล่นเด้งขึ้นตอนเอาเมาส์ชี้ */
+}
+.contact-card p {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* ส่วนแบบฟอร์ม */
+.form-section {
+    background-color: #FFFFFF;
+    padding-bottom: 80px;
+}
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ECF0F1;
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s;
+    background-color: #F8F9F9;
+}
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: #FFFFFF;
+}
+
+/* กล่องแจ้งเตือนผลลัพธ์ */
+#response-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+    font-weight: bold;
+}
+.success-msg { background-color: #D4EDDA; color: #155724; border: 1px solid #C3E6CB; }
+.error-msg { background-color: #F8D7DA; color: #721C24; border: 1px solid #F5C6CB; }
+
+/* Responsive สำหรับมือถือ */
+@media (max-width: 768px) {
+    .contact-hero { height: 40vh; }
+    .hero-content h1 { font-size: 2.2rem !important; }
+    .contact-wrapper { padding: 40px 20px; gap: 20px; }
+    .contact-card { padding: 30px 20px; }
+}
+/* =========================================
+   อัปเดต: ทำขอบสี่เหลี่ยมทุกอันให้เป็นขอบมน (Rounded Corners)
+========================================= */
+
+/* 1. กรอบเส้นขอบใหญ่ทั้งหมด (Section wrappers) */
+.outline-border {
+    border-radius: 16px;
+    overflow: hidden; /* ป้องกันเนื้อหาหรือรูปภาพพื้นหลังทะลุขอบมนออกมา */
+}
+
+/* 2. กรอบปุ่มกดเลือกหลักสูตร (Tabs) */
+.tab-btn {
+    border-radius: 12px;
+}
+
+/* 3. กล่องเนื้อหาของหลักสูตร */
+.program-content {
+    border-radius: 12px;
+}
+
+/* 4. กล่องปุ่มกด TCAS (Accordion) */
+.accordion {
+    border-radius: 10px;
+    margin-bottom: 10px; /* จับแยกกันนิดนึงเพื่อให้เห็นความมนของแต่ละปุ่มชัดขึ้น */
+    border-bottom: 1px solid var(--border-color) !important; /* เติมเส้นขอบล่างกลับมา */
+}
+
+/* เวลาที่ Accordion ถูกกดเปิด ให้มุมด้านล่างเหลี่ยมเพื่อเชื่อมกับเนื้อหาข้างใน (IxD ที่ดี) */
+.accordion.active {
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
+    border-bottom: none !important;
+}
+
+/* ส่วนของกล่องเนื้อหาที่หล่นลงมา (Panel) */
+.panel {
+    border-radius: 0 0 10px 10px; /* มนเฉพาะขอบล่างซ้ายและขวา */
+    margin-bottom: 10px;
+}
+.panel.show-border {
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* 5. กล่องคะแนนสีเทา (TGAT, A-Level) */
+.score-grid {
+    border-radius: 12px;
+}
+
+/* 6. ปุ่ม APPLY NOW */
+.brutal-btn {
+    border-radius: 10px;
