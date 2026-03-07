@@ -91,3 +91,23 @@ function openProgram(evt, programName, fee, desc) {
         }, 200);
     }
 }
+/* ปุ่มเลื่อนสไลด์ */
+let currentIndex = 0;
+
+function moveSlide(direction) {
+    const slider = document.getElementById('imageSlider'); // ต้องตรงกับ id ใน HTML
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    currentIndex += direction;
+
+    if (currentIndex >= totalSlides) {
+        currentIndex = 0;
+    } else if (currentIndex < 0) {
+        currentIndex = totalSlides - 1;
+    }
+
+    // เลื่อนรูป
+    const offset = -currentIndex * 100;
+    slider.style.transform = `translateX(${offset}%)`;
+}
