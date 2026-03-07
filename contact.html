@@ -4,93 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | IoT Engineering KMITL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        body {
-            background-image: url('images/Circuit.png'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed; 
-        }
-        .symmetrical-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-        }
-        .formal-card {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 12px; padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 1px solid var(--border-color);
-        }
-        @media (max-width: 768px) {
-            .symmetrical-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/admission-style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
     <div id="header-placeholder"></div>
 
-    <main class="mit-container" style="max-width: 1200px; padding: 40px 20px;">
+    <main class="mit-container">
         
-       <section class="hero-section outline-border" style="background-color: #1A1A1A; color: white; padding: 60px 40px; text-align: left; height: auto; display: block; background-image: none;">
-            <h1 class="massive-text" style="color: white; margin: 0; line-height: 1; border: none;">CONTACT.</h1>
-            <p class="sub-hero" style="color: #E0E0E0; margin-top: 15px; font-weight: 400;">ศูนย์บริการข้อมูลและประสานงาน ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ สจล.</p>
-            
-            <div style="margin-top: 30px; border-top: 2px solid white; padding-top: 20px;">
-                <p style="margin: 0; color: #CCCCCC; font-size: 1rem; line-height: 1.8;">
-                    <strong>GET IN TOUCH:</strong> พร้อมให้คำปรึกษา แนะนำหลักสูตร และตอบทุกข้อสงสัยเกี่ยวกับการรับสมัคร การเรียนการสอน และการเยี่ยมชมห้องปฏิบัติการ
-                </p>
+        <section class="outline-border" data-aos="fade-up" data-aos-delay="200">
+            <h1 class="massive-text">CONTACT.</h1>
+            <p class="sub-hero">ศูนย์บริการข้อมูลและประสานงาน ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ สจล.</p>
+            <div class="vision-box">
+                <p><strong>GET IN TOUCH:</strong> พร้อมให้คำปรึกษา แนะนำหลักสูตร และตอบทุกข้อสงสัยเกี่ยวกับการรับสมัคร การเรียนการสอน และการเยี่ยมชมห้องปฏิบัติการ</p>
             </div>
         </section>
-        <section class="symmetrical-grid" style="margin-top: 20px;">
+
+        <section class="grid-2-col" style="margin-top: 30px;" data-aos="fade-up" data-aos-delay="200">
             
-            <div class="outline-border formal-card">
-                <h2 class="section-title">GET IN TOUCH</h2>
+            <div class="outline-border" style="margin-bottom: 0;">
+                <h2 class="section-title">INFORMATION</h2>
                 
-                <div style="margin-top: 30px;">
-                    <h3 style="color: var(--accent-color);"><i class="fas fa-microchip"></i> ภาควิชาวิศวกรรมไอโอทีฯ</h3>
-                    <ul class="clean-list" style="margin-top: 10px; padding-left: 25px;">
-                        <li>ชั้น 12 อาคารเรียนรวม 12 ชั้น</li>
-                        <li><i class="fas fa-phone"></i> 02-329-8000 ต่อ 5129</li>
-                        <li><i class="fas fa-envelope"></i> iote@kmitl.ac.th</li>
+                <div style="margin-top: 20px;">
+                    <h3 style="color: var(--text-main); font-size: 1.2rem;"><i class="fas fa-microchip" style="color: var(--accent-color); margin-right: 8px;"></i> ภาควิชาวิศวกรรมไอโอทีฯ</h3>
+                    <ul class="clean-list" style="margin-top: 15px; padding-left: 35px !important;">
+                        <li><i class="fas fa-map-marker-alt" style="width: 20px; color: var(--text-muted);"></i> ชั้น 12 อาคารเรียนรวม 12 ชั้น</li>
+                        <li><i class="fas fa-phone" style="width: 20px; color: var(--text-muted);"></i> 02-329-8000 ต่อ 5129</li>
+                        <li><i class="fas fa-envelope" style="width: 20px; color: var(--text-muted);"></i> iote@kmitl.ac.th</li>
                     </ul>
                 </div>
 
                 <div style="margin-top: 40px;">
-                    <h3 style="color: var(--accent-color);"><i class="fas fa-atom"></i> ภาควิชาฟิสิกส์</h3>
-                    <ul class="clean-list" style="margin-top: 10px; padding-left: 25px;">
-                        <li>อาคารภาควิชาฟิสิกส์ คณะวิทยาศาสตร์</li>
-                        <li><i class="fas fa-phone"></i> 02-329-8000 ต่อ 4200</li>
-                        <li><i class="fas fa-envelope"></i> physics@kmitl.ac.th</li>
+                    <h3 style="color: var(--text-main); font-size: 1.2rem;"><i class="fas fa-atom" style="color: var(--accent-color); margin-right: 8px;"></i> ภาควิชาฟิสิกส์</h3>
+                    <ul class="clean-list" style="margin-top: 15px; padding-left: 35px !important;">
+                        <li><i class="fas fa-map-marker-alt" style="width: 20px; color: var(--text-muted);"></i> อาคารภาควิชาฟิสิกส์ คณะวิทยาศาสตร์</li>
+                        <li><i class="fas fa-phone" style="width: 20px; color: var(--text-muted);"></i> 02-329-8000 ต่อ 4200</li>
+                        <li><i class="fas fa-envelope" style="width: 20px; color: var(--text-muted);"></i> physics@kmitl.ac.th</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="outline-border formal-card">
+            <div class="outline-border" style="margin-bottom: 0;">
                 <h2 class="section-title">SEND MESSAGE</h2>
-                <form id="contactForm" style="margin-top: 30px;">
-                    <div class="form-group">
-                        <label>ชื่อ-นามสกุล</label>
-                        <input type="text" id="name" class="form-control outline-border" style="padding: 15px; margin-bottom: 0; background: rgba(255,255,255,0.8);" placeholder="กรอกชื่อของคุณ" required>
+                <form id="contactForm" style="margin-top: 20px;">
+                    <div class="form-group" style="margin-bottom: 24px;">
+                        <label style="font-weight: 600; color: var(--text-main); margin-bottom: 10px; display: block;">ชื่อ-นามสกุล</label>
+                        <input type="text" id="name" style="width: 100%; padding: 16px 20px; border: none; border-radius: 12px; background: var(--bg-body); font-family: var(--font-main); font-size: 1rem; color: var(--text-main);" placeholder="กรอกชื่อของคุณ" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label>อีเมลติดต่อกลับ</label>
-                        <input type="email" id="email" class="form-control outline-border" style="padding: 15px; margin-bottom: 0; background: rgba(255,255,255,0.8);" placeholder="example@email.com" required>
+                    <div class="form-group" style="margin-bottom: 24px;">
+                        <label style="font-weight: 600; color: var(--text-main); margin-bottom: 10px; display: block;">อีเมลติดต่อกลับ</label>
+                        <input type="email" id="email" style="width: 100%; padding: 16px 20px; border: none; border-radius: 12px; background: var(--bg-body); font-family: var(--font-main); font-size: 1rem; color: var(--text-main);" placeholder="example@email.com" required>
                     </div>
 
-                    <div class="form-group">
-                        <label>ข้อความ</label>
-                        <textarea id="message" class="form-control outline-border" rows="4" style="padding: 15px; margin-bottom: 0; background: rgba(255,255,255,0.8);" placeholder="พิมพ์ข้อความของคุณที่นี่..." required></textarea>
+                    <div class="form-group" style="margin-bottom: 24px;">
+                        <label style="font-weight: 600; color: var(--text-main); margin-bottom: 10px; display: block;">ข้อความ</label>
+                        <textarea id="message" rows="4" style="width: 100%; padding: 16px 20px; border: none; border-radius: 12px; background: var(--bg-body); font-family: var(--font-main); font-size: 1rem; color: var(--text-main); resize: vertical;" placeholder="พิมพ์ข้อความของคุณที่นี่..." required></textarea>
                     </div>
 
-                    <button type="submit" class="brutal-btn" style="width: 100%; background-color: var(--accent-color); color: white; border-radius: 10px; border: 2px solid var(--border-color);">ส่งข้อความ ↗</button>
+                    <button type="submit" class="brutal-btn" style="width: 100%; border: none; cursor: pointer;">ส่งข้อความ <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
                 </form>
 
-                <div id="response-message" style="margin-top: 20px;"></div>
+                <div id="response-message" style="margin-top: 20px; padding: 15px; border-radius: 12px; display: none; font-weight: bold;"></div>
             </div>
 
         </section>
@@ -100,12 +79,75 @@
     <script src="js/app.js"></script>
 
     <script>
+        // ฟังก์ชันช่วยตรวจสอบรูปแบบอีเมลว่าถูกต้องไหม (มี @ มี .com)
+        const validateEmail = (email) => {
+            return String(email)
+                .toLowerCase()
+                .match(
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                );
+        };
+
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault(); 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            
+            // ดึงตัวกล่อง input มาเพื่อจะเปลี่ยนสี
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
             const responseDiv = document.getElementById('response-message');
+
+            // ดึงค่าข้อความที่พิมพ์มาเช็ค
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageInput.value.trim();
+
+            // --- 1. เริ่มกระบวนการตรวจสอบ (Validation) ---
+            let isValid = true;
+            let errorMessage = "";
+
+            // รีเซ็ตสีขอบให้เป็นปกติก่อน
+            nameInput.style.borderColor = "var(--border-color)";
+            emailInput.style.borderColor = "var(--border-color)";
+            messageInput.style.borderColor = "var(--border-color)";
+
+            // เช็คชื่อ
+            if (name === "") {
+                nameInput.style.borderColor = "#c62828"; // ขอบแดง
+                errorMessage += "• กรุณากรอกชื่อ-นามสกุล<br>";
+                isValid = false;
+            }
+
+            // เช็คอีเมล
+            if (!validateEmail(email)) {
+                emailInput.style.borderColor = "#c62828"; // ขอบแดง
+                errorMessage += "• กรุณากรอกอีเมลให้ถูกต้อง (เช่น name@email.com)<br>";
+                isValid = false;
+            }
+
+            // เช็คข้อความ
+            if (message.length < 10) {
+                messageInput.style.borderColor = "#c62828"; // ขอบแดง
+                errorMessage += "• กรุณากรอกข้อความอย่างน้อย 10 ตัวอักษร<br>";
+                isValid = false;
+            }
+
+            // ถ้าข้อมูลผิด ให้โชว์ข้อความเตือนและ "หยุด" การทำงานทันที
+            if (!isValid) {
+                responseDiv.style.display = 'block';
+                responseDiv.style.backgroundColor = '#ffebee';
+                responseDiv.style.color = '#c62828';
+                responseDiv.innerHTML = '<strong>❌ พบข้อผิดพลาด:</strong><br>' + errorMessage;
+                return; // หยุดคำสั่ง ไม่ส่งไปให้ Server
+            }
+
+            // --- 2. ถ้าข้อมูลถูกต้อง ค่อยส่งไปที่ Server ---
+            
+            // แสดงสถานะระหว่างรอ Server ตอบกลับ (ให้ผู้ใช้รู้ว่าระบบกำลังทำงาน)
+            responseDiv.style.display = 'block';
+            responseDiv.style.backgroundColor = '#fff3e0'; // สีส้มอ่อน
+            responseDiv.style.color = '#e65100';
+            responseDiv.innerHTML = '⏳ กำลังส่งข้อความ...';
 
             try {
                 const response = await fetch('api/submit_contact.php', {
@@ -114,27 +156,30 @@
                     body: JSON.stringify({ name, email, message }) 
                 });
                 const result = await response.json();
-                responseDiv.style.display = 'block';
                 
                 if (result.status === 'success') {
-                    responseDiv.className = 'outline-border formal-card';
-                    responseDiv.style.backgroundColor = 'rgba(212, 237, 218, 0.9)';
-                    responseDiv.style.padding = '20px';
-                    responseDiv.innerHTML = '<h3 style="color:#155724; margin:0;">✅ ' + result.message + '</h3>';
-                    this.reset(); 
+                    responseDiv.style.backgroundColor = '#e8f5e9';
+                    responseDiv.style.color = '#2e7d32';
+                    responseDiv.innerHTML = '✅ ' + result.message;
+                    this.reset(); // ล้างข้อมูลในฟอร์มเมื่อส่งสำเร็จ
                 } else {
-                    responseDiv.className = 'outline-border formal-card';
-                    responseDiv.style.backgroundColor = 'rgba(248, 215, 218, 0.9)';
-                    responseDiv.style.padding = '20px';
-                    responseDiv.innerHTML = '<h3 style="color:#721C24; margin:0;">❌ ' + result.message + '</h3>';
+                    responseDiv.style.backgroundColor = '#ffebee';
+                    responseDiv.style.color = '#c62828';
+                    responseDiv.innerHTML = '❌ ' + result.message;
                 }
             } catch (error) {
-                responseDiv.style.display = 'block';
-                responseDiv.className = 'outline-border formal-card';
-                responseDiv.style.backgroundColor = 'rgba(248, 215, 218, 0.9)';
-                responseDiv.style.padding = '20px';
-                responseDiv.innerHTML = '<h3 style="color:#721C24; margin:0;">❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้</h3>';
+                responseDiv.style.backgroundColor = '#ffebee';
+                responseDiv.style.color = '#c62828';
+                responseDiv.innerHTML = '❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้';
             }
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // ความเร็วของแอนิเมชัน (มิลลิวินาที)
+            once: true,    // ให้แสดงแอนิเมชันแค่ครั้งเดียวตอนเลื่อนลงมาเจอ
+            offset: 100    // เลื่อนจอมาถึงก่อน 100px ค่อยแสดง
         });
     </script>
 </body>

@@ -1,0 +1,122 @@
+/* =========================================
+   admission-style.css (Clean, Minimal & Floating UI)
+========================================= */
+:root {
+    --accent-color: #E04500;
+    --text-main: #1d1d1f;      /* สีดำอมเทา ดูพรีเมียม ไม่แข็งเกินไป */
+    --text-muted: #6e6e73;     /* สีเทาสำหรับเนื้อหาย่อย ให้อ่านสบายตา */
+    --bg-body: #f5f5f7;        /* สีพื้นหลังเว็บเทาอ่อนม๊ากๆ (Apple Style) */
+    --card-bg: #ffffff;        /* สีการ์ดขาวล้วน */
+}
+
+/* ปรับสีพื้นหลังเฉพาะหน้าที่มีการ์ดให้เป็นเทาอ่อน */
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+
+.mit-container { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 60px 20px; box-sizing: border-box; }
+
+/* 🌟 ไฮไลต์: เปลี่ยนเส้นขอบดำ เป็นเงาฟุ้งๆ นุ่มๆ */
+.outline-border { 
+    border: none; 
+    margin-bottom: 30px; 
+    padding: 50px; 
+    background: var(--card-bg); 
+    border-radius: 24px; 
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04); /* เงาบางๆ */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.outline-border:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08); /* ชี้แล้วเงาชัดขึ้น */
+}
+
+/* Typography (ตัวหนังสือ) */
+.massive-text { font-size: clamp(3.5rem, 8vw, 5rem); line-height: 1; margin: 0 0 15px 0; font-weight: 800; letter-spacing: -2px; color: var(--text-main); }
+.sub-hero { font-size: 1.4rem; font-weight: 500; max-width: 800px; color: var(--text-muted); }
+.section-title { font-size: 2rem; display: inline-block; margin-bottom: 30px; font-weight: 800; letter-spacing: -0.5px; position: relative; border: none; }
+
+/* ใช้ขีดเส้นใต้สีส้มเล็กๆ แทนกรอบตีเส้นยาวๆ */
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Grids */
+.grid-3-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+/* 🌟 Tabs หลักสูตร (ดีไซน์ใหม่) */
+.tab-btn { border: none; padding: 30px; cursor: pointer; transition: all 0.3s; background: #fbfbfd; border-radius: 16px; text-align: left; }
+.tab-btn h3 { font-size: 1.3rem; margin-bottom: 8px; color: var(--text-main); transition: 0.3s; }
+.tab-btn p { color: var(--text-muted); margin: 0; transition: 0.3s; }
+.tab-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: #ffffff; }
+
+/* ปุ่มที่ถูกเลือก (สีส้มเงาฟุ้ง) */
+.tab-btn.active { background-color: var(--accent-color); color: #fff; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(224, 69, 0, 0.25); }
+.tab-btn.active h3, .tab-btn.active p { color: #fff; }
+
+.program-content { margin-top: 24px; padding: 40px; border: none; background-color: var(--bg-body); border-radius: 16px; animation: fadeIn 0.4s; font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); }
+
+/* 🌟 Accordion (ดีไซน์ไร้ขอบ) */
+.accordion { background-color: var(--bg-body); color: var(--text-main); cursor: pointer; padding: 24px 30px; width: 100%; text-align: left; border: none; outline: none; font-size: 1.2rem; font-weight: 700; transition: 0.3s; border-radius: 16px; margin-bottom: 12px; }
+.accordion:hover { background-color: #f1f1f3; }
+.accordion.active { background-color: var(--accent-color); color: white; border-radius: 16px 16px 0 0; margin-bottom: 0; box-shadow: 0 10px 20px rgba(224, 69, 0, 0.2); }
+.panel { padding: 0 30px; background-color: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; border: none; border-radius: 0 0 16px 16px; margin-bottom: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+.panel.show-border { padding-top: 25px !important; padding-bottom: 35px !important; }
+
+/* Lists & Texts */
+.clean-list, .step-list { padding-left: 0 !important; list-style-position: inside; color: var(--text-muted); }
+.step-list li, .clean-list li { margin-bottom: 15px; font-size: 1.1rem; line-height: 1.7; }
+.clean-list strong, .step-list strong { color: var(--text-main); }
+
+/* กล่องคะแนน */
+.score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; padding: 30px; background: #fbfbfd; border: none; border-radius: 16px; }
+.score-grid div { line-height: 1.6; font-size: 1.1rem; color: var(--text-main); }
+
+/* Elements */
+.huge-fee { font-size: clamp(3rem, 5vw, 4.5rem); margin: 10px 0; transition: color 0.3s; font-weight: 800; letter-spacing: -1px; }
+.brutal-btn { display: inline-block; background-color: var(--accent-color); color: #fff; padding: 18px 36px; text-decoration: none; font-weight: 700; font-size: 1.1rem; margin-top: 20px; transition: 0.3s; border-radius: 50px; box-shadow: 0 10px 20px rgba(224, 69, 0, 0.2); }
+.brutal-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(224, 69, 0, 0.35); background-color: #D35400; color: #fff; }
+
+.info-box { padding: 10px 20px; }
+.border-right { border-right: 1px solid #eaeaea; }
+
+/* เส้นคั่น VISION (ดีไซน์นุ่มนวล) */
+.vision-box { margin-top: 30px; border-top: 1px solid #eaeaea; padding-top: 30px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; }
+.vision-box strong { color: var(--text-main); }
+
+@media (max-width: 768px) {
+    .grid-2-col { grid-template-columns: 1fr; gap: 30px; }
+    .border-right { border-right: none; border-bottom: 1px solid #eaeaea; padding-bottom: 30px; padding-right: 0; }
+    .outline-border { padding: 30px 20px; border-radius: 16px; }
+    .score-grid { grid-template-columns: 1fr; }
+}
+/* =========================================
+   Skeleton Loader (หน้า Faculty)
+========================================= */
+.skeleton-card {
+    background: #fbfbfd;
+    border-radius: 16px;
+    padding: 30px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+.skeleton-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: linear-gradient(90deg, rgba(238,238,238,0) 0%, rgba(238,238,238,0.8) 50%, rgba(238,238,238,0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}

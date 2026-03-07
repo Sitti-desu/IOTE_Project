@@ -4,139 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Lab & Performance | IoT Engineering KMITL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* ✨ เพิ่มสไตล์พิเศษสำหรับหน้า Performance เพื่อความสมมาตรและเป็นทางการ ✨ */
-        body {
-            /* แก้ไข Path รูปภาพให้ถูกต้องตามเครื่องของคุณ และเปลี่ยนเป็น .jpg */
-            background-image: url('images/Circuit.png'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed; /* ภาพพื้นหลังนิ่งเวลากลิ้งหน้าจอ */
-        }
-
-        /* 2. บังคับ Grid 2 คอลัมน์ให้สมมาตรกันทุก Section */
-        .symmetrical-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* 2 คอลัมน์กว้างเท่ากัน */
-            gap: 40px;
-        }
-
-        /* 3. ปรับสไตล์ Card ให้ดูเป็นทางการ (Formal) ขึ้น */
-        .formal-card {
-            background-color: rgba(255, 255, 255, 0.9); /* ขาวใสๆ ให้เห็นพื้นหลังนิดหน่อย */
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 1px solid var(--border-color); /* เส้นขอบบางๆ */
-        }
-
-        @media (max-width: 768px) {
-            .symmetrical-grid { grid-template-columns: 1fr; } /* มือถือ 1 คอลัมน์ */
-        }
-    </style>
+    <link rel="stylesheet" href="css/admission-style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
     <div id="header-placeholder"></div>
 
-    <main class="mit-container" style="max-width: 1200px; padding: 40px 20px;">
+    <main class="mit-container">
         
-       <section class="hero-section outline-border" style="background-color: #1A1A1A; color: white; padding: 60px 40px; text-align: left; height: auto; display: block; background-image: none;">
-            <h1 class="massive-text" style="color: white; margin: 0; line-height: 1; border: none;">PERFORMANCE.</h1>
-            <p class="sub-hero" style="color: #E0E0E0; margin-top: 15px; font-weight: 400;">ผลงานและห้องปฏิบัติการวิจัยด้านความมั่นคงปลอดภัยทางไซเบอร์</p>
-            
-            <div style="margin-top: 30px; border-top: 2px solid white; padding-top: 20px;">
-                <p style="margin: 0; color: #CCCCCC; font-size: 1rem; line-height: 1.8;">
-                    <strong>MISSION:</strong> มุ่งเน้นการสร้างภูมิคุ้มกันให้ครอบคลุมระบบนิเวศของเทคโนโลยีแห่งอนาคต ผสมผสานการทดสอบเจาะระบบและการเตรียมพร้อมรับมือภัยคุกคามด้วย AI Data Analytics
-                </p>
+        <section class="outline-border" data-aos="fade-up" data-aos-delay="200">
+            <h1 class="massive-text">PERFORMANCE.</h1>
+            <p class="sub-hero">ผลงานและห้องปฏิบัติการวิจัยด้านความมั่นคงปลอดภัยทางไซเบอร์</p>
+            <div class="vision-box">
+                <p><strong>MISSION:</strong> มุ่งเน้นการสร้างภูมิคุ้มกันให้ครอบคลุมระบบนิเวศของเทคโนโลยีแห่งอนาคต ผสมผสานการทดสอบเจาะระบบและการเตรียมพร้อมรับมือภัยคุกคามด้วย AI Data Analytics</p>
             </div>
         </section>
 
-        <section class="symmetrical-grid" style="margin-top: 20px;">
-            
-            <div class="outline-border formal-card">
+        <section class="grid-2-col" data-aos="fade-up" data-aos-delay="200">
+            <div class="outline-border" style="margin-bottom: 0;">
                 <h2 class="section-title">IT & IOT CYBER LAB</h2>
                 <p style="font-size: 1.1rem; color: var(--accent-color); font-weight: bold; margin-bottom: 15px;"><i class="fas fa-map-marker-alt"></i> สถานที่: อาคาร E-12</p>
-                <p>พื้นที่เฉพาะสำหรับให้นักศึกษาและนักวิจัยได้ฝึกฝนทักษะการรับมือและวิเคราะห์ภัยคุกคามทางไซเบอร์ โดยมุ่งเน้นความเชี่ยวชาญ 2 ส่วนหลัก:</p>
-                <ul class="clean-list" style="margin-top: 15px; padding-left: 20px;">
+                <p style="color: var(--text-muted); line-height: 1.8;">พื้นที่เฉพาะสำหรับให้นักศึกษาและนักวิจัยได้ฝึกฝนทักษะการรับมือและวิเคราะห์ภัยคุกคามทางไซเบอร์ โดยมุ่งเน้นความเชี่ยวชาญ 2 ส่วนหลัก:</p>
+                <ul class="clean-list" style="margin-top: 15px; padding-left: 20px !important;">
                     <li><strong>🛡️ Defensive Security:</strong> การกำหนดค่าเครือข่าย ไฟร์วอลล์ และการเข้ารหัส</li>
                     <li><strong>⚔️ Offensive Security:</strong> Ethical Hacking เจาะระบบเพื่อค้นหาช่องโหว่</li>
                 </ul>
             </div>
 
-            <div class="outline-border formal-card">
+            <div class="outline-border" style="margin-bottom: 0;">
                 <h2 class="section-title">CORE RESEARCH AREAS</h2>
-                <ul class="clean-list" style="margin-top: 20px; font-size: 1.1rem; line-height: 2.2;">
-                    <li><i class="fas fa-satellite-dish" style="color: var(--accent-color);"></i> Network & IoT Security</li>
-                    <li><i class="fas fa-brain" style="color: var(--accent-color);"></i> AI Data Analytics for Threat Detection</li>
-                    <li><i class="fas fa-user-secret" style="color: var(--accent-color);"></i> Penetration Testing & Vulnerability Assessment</li>
+                <ul class="clean-list" style="font-size: 1.1rem; line-height: 2.2; margin-top: 10px;">
+                    <li><i class="fas fa-satellite-dish" style="color: var(--accent-color); width: 30px;"></i> <strong style="color: var(--text-main);">Network & IoT Security</strong></li>
+                    <li><i class="fas fa-brain" style="color: var(--accent-color); width: 30px;"></i> <strong style="color: var(--text-main);">AI Data Analytics for Threat Detection</strong></li>
+                    <li><i class="fas fa-user-secret" style="color: var(--accent-color); width: 30px;"></i> <strong style="color: var(--text-main);">Penetration Testing & Vulnerability Assessment</strong></li>
                 </ul>
             </div>
-
         </section>
 
-        <section class="grid-2-col outline-border formal-card" style="margin-top: 20px; gap: 40px; padding: 0;">
-            <div class="info-box border-right" style="padding: 40px;">
-                <h2 class="section-title">RESEARCH TEAM</h2>
+        <section class="outline-border" style="margin-top: 30px;" data-aos="fade-up" data-aos-delay="200">
+            <div class="grid-2-col">
+                <div class="border-right" style="padding-right: 40px;">
+                    <h2 class="section-title">RESEARCH TEAM</h2>
+                    
+                    <h3 style="margin-top: 15px; font-weight: 700; font-size: 1.1rem; color: var(--text-main);">👨‍🏫 คณาจารย์ / นักวิจัยหลัก</h3>
+                    <ul class="clean-list">
+                        <li>ผศ.ดร.อรรถพล ป้อมสถิตย์</li>
+                        <li>ผศ.ดร.วันวิสา ชัชวงษ์</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 25px; font-weight: 700; font-size: 1.1rem; color: var(--text-main);">👨‍💻 ทีมผู้ช่วยนักวิจัย (นักศึกษา)</h3>
+                    <ul class="clean-list" style="font-size: 1rem;">
+                        <li><strong>AI & Data Analytics:</strong> ชินวัตร ศิลาธนสาร, ฐิติพันต์ สอนโคตร</li>
+                        <li><strong>Penetration Testing:</strong> ศุภฤกษ์ หาระสาร, สรพัศ พิศิลป์</li>
+                        <li><strong>Network Infrastructure:</strong> กฤษณ์ เกษมเทวินทร์</li>
+                    </ul>
+                </div>
                 
-                <h3 style="margin-top: 15px; font-weight: 700;">👨‍🏫 คณาจารย์ / นักวิจัยหลัก</h3>
-                <ul class="clean-list" style="padding-left: 15px;">
-                    <li>ผศ.ดร.อรรถพล ป้อมสถิตย์</li>
-                    <li>ผศ.ดร.วันวิสา ชัชวงษ์</li>
-                </ul>
-                
-                <h3 style="margin-top: 25px; font-weight: 700;">👨‍💻 ทีมผู้ช่วยนักวิจัย (นักศึกษา)</h3>
-                <ul class="clean-list" style="padding-left: 15px; font-size: 0.95rem;">
-                    <li><strong>AI & Data Analytics:</strong> ชินวัตร ศิลาธนสาร, ฐิติพันต์ สอนโคตร</li>
-                    <li><strong>Penetration Testing:</strong> ศุภฤกษ์ หาระสาร, สรพัศ พิศิลป์</li>
-                    <li><strong>Network Infrastructure:</strong> กฤษณ์ เกษมเทวินทร์</li>
-                </ul>
-            </div>
-            
-            <div class="info-box" style="padding: 40px;">
-                <h2 class="section-title">COLLABORATION</h2>
-                <p>ได้รับการสนับสนุนจากทุนวิจัยภายในของสถาบัน และความร่วมมือกับหน่วยงานภาครัฐ/เอกชนในการพัฒนาระบบนิเวศ IoT ที่ปลอดภัย</p>
-                
-                <div style="margin-top: 30px; padding: 25px; background: #f4f4f4; border-radius: 12px; border: 1px solid var(--border-color);">
-                    <p style="margin: 0;"><strong>🤝 Partnership:</strong> ความร่วมมือกับบริษัทระดับโลกอย่าง <strong>Fortinet</strong> เพื่อจัดตั้งศูนย์ความเป็นเลิศด้านความปลอดภัยทางไซเบอร์ (Center of Excellence)</p>
+                <div style="padding-left: 20px;">
+                    <h2 class="section-title">COLLABORATION</h2>
+                    <p style="color: var(--text-muted); line-height: 1.8;">ได้รับการสนับสนุนจากทุนวิจัยภายในของสถาบัน และความร่วมมือกับหน่วยงานภาครัฐ/เอกชนในการพัฒนาระบบนิเวศ IoT ที่ปลอดภัย</p>
+                    
+                    <div style="margin-top: 30px; padding: 25px; background: var(--bg-body); border-radius: 16px;">
+                        <p style="margin: 0; color: var(--text-muted); line-height: 1.6;"><strong>🤝 Partnership:</strong> ความร่วมมือกับบริษัทระดับโลกอย่าง <strong>Fortinet</strong> เพื่อจัดตั้งศูนย์ความเป็นเลิศด้านความปลอดภัยทางไซเบอร์</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="symmetrical-grid" style="margin-top: 20px;">
-            
-            <div class="outline-border formal-card">
+        <section class="grid-2-col" data-aos="fade-up" data-aos-delay="200">
+            <div class="outline-border" style="margin-bottom: 0;">
                 <h2 class="section-title">REQUIRED SKILLS</h2>
-                <ul class="clean-list" style="margin-top: 15px; font-size: 1rem;">
-                    <li><i class="fas fa-code" style="color: var(--accent-color); width: 25px;"></i> <strong>Programming & Secure Coding:</strong> OOP Concepts, Secure Software Development</li>
-                    <li><i class="fas fa-network-wired" style="color: var(--accent-color); width: 25px;"></i> <strong>Hardware & Network:</strong> IoT Protocols, Network Infrastructure</li>
+                <ul class="clean-list" style="margin-top: 15px; font-size: 1.05rem;">
+                    <li><i class="fas fa-code" style="color: var(--accent-color); width: 25px;"></i> <strong>Programming & Secure Coding:</strong><br> OOP Concepts, Secure Software Development</li>
+                    <li style="margin-top: 15px;"><i class="fas fa-network-wired" style="color: var(--accent-color); width: 25px;"></i> <strong>Hardware & Network:</strong><br> IoT Protocols, Network Infrastructure</li>
                 </ul>
             </div>
 
-            <div class="outline-border formal-card">
+            <div class="outline-border" style="margin-bottom: 0;">
                 <h2 class="section-title">RESPONSIBILITIES</h2>
-                <ul class="clean-list" style="margin-top: 15px; font-size: 1rem;">
+                <ul class="clean-list" style="margin-top: 15px; font-size: 1.05rem;">
                     <li>👨‍💻 การออกแบบสถาปัตยกรรมระบบ (System Architecture Design)</li>
                     <li>⚔️ การทดสอบเจาะระบบเพื่อหาช่องโหว่ (Vulnerability Assessment)</li>
                     <li>📊 การเก็บข้อมูล วิจัย และสรุปผลเพื่อพัฒนาระบบความปลอดภัย</li>
                 </ul>
             </div>
-
         </section>
 
-        <section class="outline-border formal-card" style="margin-top: 20px; background-color: var(--text-color); color: white;">
-            <h2 class="section-title" style="border-color: white; color: var(--accent-color);">VISION & DIRECTION</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: white;">"มุ่งเน้นการสร้างภูมิคุ้มกันให้ครอบคลุมระบบนิเวศของเทคโนโลยีแห่งอนาคต โดยผสมผสานการตรวจหาช่องโหว่ในปัจจุบัน (Penetration Testing) และการเตรียมพร้อมรับมือกับการโจมตีในอนาคตด้วยเทคโนโลยีอัจฉริยะ (AI Data Analytics)"</p>
+        <section class="outline-border" style="margin-top: 30px; background-color: var(--text-main); color: white;" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="section-title" style="color: var(--card-bg);">VISION & DIRECTION</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: #d2d2d7; margin-top: 10px;">"มุ่งเน้นการสร้างภูมิคุ้มกันให้ครอบคลุมระบบนิเวศของเทคโนโลยีแห่งอนาคต โดยผสมผสานการตรวจหาช่องโหว่ในปัจจุบัน (Penetration Testing) และการเตรียมพร้อมรับมือกับการโจมตีในอนาคตด้วยเทคโนโลยีอัจฉริยะ (AI Data Analytics)"</p>
         </section>
 
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="js/app.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // ความเร็วของแอนิเมชัน (มิลลิวินาที)
+            once: true,    // ให้แสดงแอนิเมชันแค่ครั้งเดียวตอนเลื่อนลงมาเจอ
+            offset: 100    // เลื่อนจอมาถึงก่อน 100px ค่อยแสดง
+        });
+    </script>
 
 </body>
 </html>

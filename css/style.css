@@ -1,10 +1,9 @@
-/* Import ฟอนต์ที่ดูคลีนๆ (Lato และ Prompt) */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Prompt:wght@300;400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Prompt:wght@300;400;600&display=swap');
 
 :root {
-    --primary-color: #E67E22; /* สีส้มสไตล์ Flat */
-    --secondary-color: #2C3E50; /* สีเทาเข้ม/น้ำเงินกรมท่า */
-    --bg-color: #F8F9F9; /* สีพื้นหลังสว่างสบายตา */
+    --primary-color: #E67E22; 
+    --secondary-color: #2C3E50; 
+    --bg-color: #F8F9F9; 
     --text-color: #333333;
     --font-main: 'Lato', 'Prompt', sans-serif;
 }
@@ -16,36 +15,10 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden; 
 }
 
-/* สไตล์กล่องเนื้อหา (Card) แบบ Flat */
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 10px; /* ขอบมน */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* เงาบางๆ */
-    margin-bottom: 20px;
-}
-
-/* สไตล์ปุ่มแบบ Flat */
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-.btn:hover {
-    background-color: #D35400;
-}
-/* =========================================
-   Header & Navigation (Desktop)
-========================================= */
+/* --- โครงสร้าง Header (Desktop & Mobile) --- */
 .main-header {
     background-color: #FFFFFF;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -75,11 +48,11 @@ body {
 }
 .nav-link:hover { color: var(--primary-color); }
 
-/* --- Dropdown Menu (Desktop) --- */
+/* Dropdown Menu */
 .dropdown { position: relative; }
 .dropdown-menu {
-    display: none; /* ซ่อนเมนูย่อยไว้ก่อน */
-    position: absolute; /* ให้กล่องลอยขึ้นมา ไม่ดันเมนูอื่น */
+    display: none; 
+    position: absolute; 
     top: 100%;
     left: 0;
     background-color: #FFFFFF;
@@ -92,7 +65,7 @@ body {
     z-index: 1000;
 }
 .dropdown-menu.show {
-    display: flex; /* แสดงกล่องเมื่อถูกคลิก (JS จะมาเติมคลาสนี้) */
+    display: flex; 
     animation: fadeIn 0.2s ease-in-out;
 }
 .dropdown-menu li { list-style: none; width: 100%; }
@@ -101,503 +74,143 @@ body {
     display: block;
     text-decoration: none;
     color: var(--secondary-color);
+    white-space: normal !important; 
+    line-height: 1.5;
 }
 .dropdown-menu a:hover { background-color: #F8F9F9; color: var(--primary-color); }
+
+/* Nested Dropdown */
+.dropdown-menu li.nested-dropdown { position: relative; }
+.nested-dropdown-menu {
+    display: none; 
+    position: absolute;
+    left: 100%; 
+    top: 0;
+    background-color: #FFFFFF;
+    min-width: 300px; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    flex-direction: column;
+    padding: 10px 0;
+    margin-left: 2px; 
+    z-index: 1001;
+}
+.nested-dropdown-menu a { white-space: normal !important; line-height: 1.5; }
+.dropdown-menu li.nested-dropdown:hover .nested-dropdown-menu { display: flex; animation: fadeIn 0.2s ease-in-out; }
+.dropdown-menu li.nested-dropdown:hover > a { color: var(--primary-color); background-color: #F8F9F9; }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* =========================================
-   Mobile Responsive (Half-page dropdown)
-========================================= */
 @media (max-width: 768px) {
-    .main-header { padding: 15px 20px; }
-    .mobile-menu-btn { display: block; } /* โชว์ปุ่มแฮมเบอร์เกอร์ */
+    .main-header { 
+        padding: 15px 20px;
+        display: flex;             /* บังคับใช้ flex */
+        justify-content: space-between; /* ✨ ดันของ 2 อย่างแยกซ้าย-ขวา ✨ */
+        align-items: center;
+    }
+    
+    .logo {
+        flex: 1;                   /* ให้โลโก้กินพื้นที่ฝั่งซ้าย */
+    }
+
+    .mobile-menu-btn { 
+        display: block !important; /* ✨ บังคับให้แสดงผล ✨ */
+        font-size: 28px;
+        cursor: pointer;
+        order: 2;                  /* บังคับให้อยู่ลำดับสุดท้าย (ขวาสุด) */
+        padding: 5px;
+    }
     
     .nav-list {
-        display: none; /* ซ่อนเมนูแนวนอน */
+        display: none; 
         position: absolute;
-        top: 100%;
+        top: 100%; /* หล่นลงมาใต้ Header พอดี */
         left: 0;
         width: 100%;
-        height: 50vh; /* คลุมครึ่งหน้าจอตามสั่ง! */
+        height: auto; /* ✨ เปลี่ยนเป็น auto ให้สูงพอดีกับจำนวนเมนู ไม่กินที่หน้าจอ */
         background-color: #FFFFFF;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        justify-content: flex-start; /* ✨ เรียงจากบนลงล่างตามปกติ */
+        align-items: stretch; /* ให้พื้นที่ปุ่มกว้างเต็มจอ */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* เงาฟุ้งๆ ดรอปลงมา */
         border-bottom-left-radius: 16px;
         border-bottom-right-radius: 16px;
         z-index: 999;
+        padding: 10px 0 20px 0; 
+        border-top: 1px solid #f5f5f7; /* เส้นคั่นบางๆ แยก Header ออกจากเมนู */
     }
-    .nav-list.active { display: flex; }
-    .nav-list li { margin: 15px 0; width: 100%; text-align: center; }
-    .nav-link { font-size: 1.2rem; }
     
-    /* ปรับเมนูย่อยในมือถือไม่ให้ลอยมั่ว */
-    .dropdown-menu {
+    .nav-list.active { 
+        display: flex; 
+        animation: fadeIn 0.2s ease-in-out; /* เพิ่มแอนิเมชันให้ดูสมูท */
+    }
+    
+    .nav-list li { 
+        margin: 0; /* ลบระยะห่างแปลกๆ ออก */
+        width: 100%; 
+        text-align: center; 
+    }
+    
+    .nav-link { 
+        display: block;
+        padding: 16px 20px; /* ✨ เพิ่มพื้นที่ให้ปลายนิ้วกดง่ายขึ้น */
+        font-size: 1.1rem; 
+        border-bottom: 1px solid #fbfbfd; /* เส้นคั่นแบ่งแต่ละเมนู */
+    }
+    
+    .nav-link:hover, .nav-link:active {
+        background-color: var(--bg-body); /* เปลี่ยนสีเทาอ่อนตอนเอานิ้วจิ้ม */
+        color: var(--accent-color);
+    }
+    
+    /* เผื่อสำหรับเมนูย่อย (ถ้ามี) */
+    .dropdown-menu { 
         position: relative; 
-        box-shadow: none;
-        background-color: #F8F9F9;
-        margin-top: 10px;
+        box-shadow: none; 
+        background-color: #fbfbfd; 
+        margin-top: 0; 
+        min-width: 100% !important; 
+        border-radius: 0; 
+    }
+    .nested-dropdown-menu { 
+        position: relative; left: 0; min-width: 100%; margin-left: 0; box-shadow: none; background-color: #F4F6F7; border-radius: 0; 
+    }
+    .dropdown-menu li.nested-dropdown:hover .nested-dropdown-menu { 
+        display: flex; 
     }
 }
-/* =========================================
-   Complex Footer (Fat Footer)
-========================================= */
-.complex-footer {
-    width: 100%;
-    margin-top: auto;
-    color: #FFFFFF;
-    font-family: var(--font-main);
-    font-size: 0.9rem;
-}
+/* --- โครงสร้าง Footer --- */
+.complex-footer { width: 100%; margin-top: auto; color: #FFFFFF; font-family: var(--font-main); font-size: 0.9rem; }
+.footer-main { background-color: var(--secondary-color); padding: 50px 50px 30px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 30px; }
+.footer-logo { max-width: 180px; margin-bottom: 20px; background-color: white; padding: 10px; border-radius: 8px; }
+.footer-col h4 { color: #FFFFFF; font-size: 1.1rem; margin-bottom: 20px; font-weight: 600; }
+.footer-col p { color: #BDC3C7; line-height: 1.8; }
+.footer-col ul { list-style: none; padding: 0; margin: 0; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul a { color: #BDC3C7; text-decoration: none; transition: color 0.3s; }
+.footer-col ul a:hover { color: var(--primary-color); }
+.social-icons { display: flex; gap: 15px; }
+.social-icons a { display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; background-color: #FFFFFF; color: var(--secondary-color); border-radius: 50%; text-decoration: none; font-size: 1.2rem; transition: all 0.3s; }
+.social-icons a:hover { background-color: var(--primary-color); color: #FFFFFF; transform: translateY(-3px); }
+.footer-phone-bar { background-color: var(--primary-color); padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: relative; }
+.phone-content { font-size: 1.5rem; font-weight: bold; color: #FFFFFF; display: flex; align-items: center; gap: 10px; }
+.back-to-top { display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; background-color: #A04000; color: white; border-radius: 50%; text-decoration: none; font-size: 1.5rem; transition: background-color 0.3s; }
+.back-to-top:hover { background-color: #2C3E50; }
+.footer-bottom { background-color: #1A252F; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #95A5A6; }
+.footer-bottom-links a { color: #95A5A6; text-decoration: none; transition: color 0.3s; }
+.footer-bottom-links a:hover { color: white; }
 
-/* 1. ส่วนหลักพื้นหลังสีเทาเข้ม */
-.footer-main {
-    background-color: var(--secondary-color); /* สีเทาเข้ม/กรมท่า ตามธีมของคุณ */
-    padding: 50px 50px 30px;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr; /* แบ่งคอลัมน์ ที่อยู่กว้างสุด */
-    gap: 30px;
-}
 
-.footer-logo {
-    max-width: 180px;
-    margin-bottom: 20px;
-    background-color: white; /* รองพื้นโลโก้เผื่อเป็น PNG โปร่งใส */
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.footer-col h4 {
-    color: #FFFFFF;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-.footer-col p {
-    color: #BDC3C7;
-    line-height: 1.8;
-}
-
-.footer-col ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-col ul li {
-    margin-bottom: 12px;
-}
-
-.footer-col ul a {
-    color: #BDC3C7;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-col ul a:hover {
-    color: var(--primary-color);
-}
-
-/* ไอคอน Social Media (วงกลมสไตล์ Flat) */
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-.social-icons a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: #FFFFFF;
-    color: var(--secondary-color);
-    border-radius: 50%;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: all 0.3s;
-}
-.social-icons a:hover {
-    background-color: var(--primary-color);
-    color: #FFFFFF;
-    transform: translateY(-3px);
-}
-
-/* 2. แถบเบอร์โทรสีส้ม (KMITL Theme) */
-.footer-phone-bar {
-    background-color: var(--primary-color); /* ใช้สีส้มของคุณ */
-    padding: 20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
-.phone-content {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* ปุ่มเลื่อนขึ้นบน */
-.back-to-top {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    background-color: #A04000; /* สีส้มเข้ม */
-    color: white;
-    border-radius: 50%;
-    text-decoration: none;
-    font-size: 1.5rem;
-    transition: background-color 0.3s;
-}
-.back-to-top:hover {
-    background-color: #2C3E50;
-}
-
-/* 3. แถบล่างสุด (ลิขสิทธิ์) */
-.footer-bottom {
-    background-color: #1A252F; /* เทาเข้มกว่าส่วนบน */
-    padding: 15px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-    color: #95A5A6;
-}
-.footer-bottom-links a {
-    color: #95A5A6;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-.footer-bottom-links a:hover {
-    color: white;
-}
-
-/* =========================================
-   Responsive Footer (มือถือและแท็บเล็ต)
-========================================= */
 @media (max-width: 992px) {
-    .footer-main {
-        grid-template-columns: repeat(2, 1fr); /* แท็บเล็ต 2 คอลัมน์ */
-    }
-    .address-col {
-        grid-column: 1 / -1; /* ให้ที่อยู่กินพื้นที่เต็ม */
-    }
+    .footer-main { grid-template-columns: repeat(2, 1fr); }
+    .address-col { grid-column: 1 / -1; }
 }
 
 @media (max-width: 768px) {
-    .footer-main {
-        grid-template-columns: 1fr; /* มือถือ 1 คอลัมน์ เรียงลงมา */
-        padding: 40px 20px;
-    }
-    .footer-phone-bar {
-        padding: 20px;
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-    .footer-bottom {
-        padding: 15px 20px;
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
+    .footer-main { grid-template-columns: 1fr; padding: 40px 20px; }
+    .footer-phone-bar { padding: 20px; flex-direction: column; gap: 15px; text-align: center; }
+    .footer-bottom { padding: 15px 20px; flex-direction: column; gap: 10px; text-align: center; }
 }
-/*ส่วนของหน้า admission */
-* {
-    box-sizing: border-box;
-}
-:root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --accent-color: #E04500;
-    --border-color: #000000;
-}
-
-body {
-    font-family: 'Space Grotesk', 'Noto Sans Thai', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-}
-
-.mit-container {
-    flex: 1; width: 100%; max-width: 1400px; margin: 0 auto; padding: 20px; box-sizing: border-box;
-}
-
-.outline-border {
-    border: 2px solid var(--border-color); margin-bottom: 20px; padding: 40px; background: #fff;
-}
-
-.massive-text {
-    font-size: clamp(4rem, 8vw, 6rem); line-height: 0.9; margin: 0 0 20px 0; font-weight: 700; letter-spacing: -2px;
-}
-.sub-hero { font-size: 1.5rem; font-weight: 600; max-width: 800px; }
-.section-title { font-size: 2rem; border-bottom: 4px solid var(--text-color); display: inline-block; margin-bottom: 20px; text-transform: uppercase; font-weight: 700; }
-
-.grid-3-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 0; }
-
-/* Tabs system */
-.tab-btn { border: 2px solid var(--border-color); padding: 20px; cursor: pointer; transition: all 0.2s; background: #fff; }
-.tab-btn:hover { border-color: var(--accent-color); transform: translateY(-3px); }
-.tab-btn.active { background-color: var(--accent-color); color: var(--bg-color); border: 2px solid var(--accent-color); }
-.program-content { margin-top: 20px; padding: 30px; border: 2px solid var(--border-color); background-color: #f9f9f9; animation: fadeIn 0.4s; }
-
-/* Accordion */
-.accordion { background-color: transparent; color: var(--text-color); cursor: pointer; padding: 20px; width: 100%; text-align: left; border: 1px solid var(--border-color); border-bottom: none; outline: none; font-size: 1.2rem; font-weight: 700; transition: 0.2s; }
-.accordion:last-of-type { border-bottom: 1px solid var(--border-color); }
-.accordion:hover, .accordion.active { background-color: var(--accent-color); color: white; }
-.panel { padding: 0 20px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); }
-.panel.show-border { border-bottom: 1px solid var(--border-color); padding: 20px; }
-
-/* Lists & Misc */
-.clean-list li { margin-bottom: 15px; }
-.step-list li { margin-bottom: 15px; font-size: 1.1rem; }
-/* --- แก้ไขกล่องคะแนนสีเทาไม่ให้ข้อความชิดขอบ --- */
-.score-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 15px; /* เพิ่มระยะห่างระหว่างบรรทัด TGAT กับ A-Level */
-    margin-top: 15px; 
-    padding: 25px; /* ✨ เพิ่มตรงนี้! ดันกรอบสีเทาให้กว้างออก ข้อความจะไม่ชนเส้นบน-ล่าง-ซ้าย-ขวา */
-    background: #f4f4f4; 
-    border: 1px solid #ddd; 
-    margin-bottom: 10px; /* ดันกล่องสีเทาไม่ให้ไปเบียดเส้นขอบด้านล่าง */
-}
-
-/* เพิ่มระยะบรรทัดให้ตัวหนังสือข้างในกล่องสีเทา */
-.score-grid div {
-    line-height: 1.6;
-}
-
-.huge-fee { font-size: clamp(3rem, 5vw, 5rem); margin: 10px 0; transition: color 0.3s; }
-.brutal-btn { display: inline-block; background-color: var(--text-color); color: var(--bg-color); padding: 15px 30px; text-decoration: none; font-weight: bold; font-size: 1.2rem; margin-top: 20px; transition: 0.3s; border: 2px solid transparent; }
-.brutal-btn:hover { background-color: transparent; color: var(--text-color); border: 2px solid var(--text-color); }
-
-.info-box { padding: 20px ; }
-.border-right { border-right: 2px solid var(--border-color);  }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-
-@media (max-width: 768px) {
-    .grid-2-col { grid-template-columns: 1fr; gap: 20px; }
-    .border-right { border-right: none; padding-right: 0; border-bottom: 2px solid #555; padding-bottom: 20px; }
-    .outline-border { padding: 20px; }
-    .score-grid { grid-template-columns: 1fr; }
-}
-/* โค้ดสำหรับดันลิสต์ข้อความไม่ให้ชิดขอบซ้าย */
-.clean-list, .step-list {
-    padding-left: 25px !important; /* ดันตัวเลขและจุดไข่ปลาให้ขยับมาทางขวา 25px */
-    margin-top: 10px;
-}
-
-.step-list li, .clean-list li {
-    margin-bottom: 15px; 
-    font-size: 1.1rem;
-    line-height: 1.6; /* เพิ่มช่องไฟระหว่างบรรทัดให้อ่านง่าย ไม่เบียดกัน */
-}
-/* --- แก้ปัญหากล่อง ROUND 1, 2, 3 ข้อความชิดขอบล่าง --- */
-.panel.show-border {
-    padding-top: 25px !important;
-    padding-bottom: 35px !important; /* ✨ เพิ่มเบาะรองนั่งด้านล่าง 35px ให้ข้อความหายใจออก */
-}
-
-/* บังคับไม่ให้ลิสต์บรรทัดสุดท้ายสร้างระยะห่าง (Margin) ไปดันกรอบจนเกินไป */
-.panel .clean-list {
-    margin-bottom: 0 !important;
-    padding-bottom: 10px;
-}
-/* --- เปลี่ยนพื้นหลังส่วนกรอบบนสุด (ADMISSION 2026) เป็นสีส้มอ่อน --- */
-/* --- เปลี่ยนพื้นหลังส่วนกรอบบนสุดเป็นรูปภาพ --- */
-.hero-section {
-    /* 1. ดึงรูปภาพมาใส่ (สังเกต ../ คือการถอยออกจากโฟลเดอร์ css ไปหาโฟลเดอร์ images) */
-    background-image: url('../images/iot.jpg') !important;
-    
-    /* 2. จัดระเบียบรูปภาพให้สวยงาม */
-    background-size: cover !important; /* บังคับให้รูปขยายเต็มกรอบพอดี */
-    background-position: center !important; /* จัดรูปให้อยู่กึ่งกลางเสมอ */
-    background-repeat: no-repeat !important; /* ป้องกันไม่ให้รูปลอกลายซ้ำๆ กัน */
-    
-    /* 3. สีตัวหนังสือ (ปรับได้ตามความมืด/สว่างของรูป) */
-    color: #ffffff !important; /* ถ้ารูปคุณมืด ให้ใช้ตัวหนังสือสีขาว (#ffffff) */
-}
-
-/* เปลี่ยนสีเส้นคั่นตรงคำว่า VISION ให้เข้ากับตัวหนังสือ */
-.hero-section .vision-box {
-    border-top: 2px solid #ffffff !important; 
-}
-
-/* =========================================
-   Contact Page Styles
-========================================= */
-/* Hero Section สำหรับหน้า Contact */
-.contact-hero {
-    height: 50vh;
-    /* // COMMENT: แก้ไขลิงก์รูปภาพเป็น Relative Path แล้ว (ถอยไปหาโฟลเดอร์ images) */
-    background-image: url('../images/AdobeStock_249319654-2048x892.jpeg');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.hero-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(44, 62, 80, 0.7); /* ใช้สีโทนกรมท่าทับรูปให้ตัวหนังสือเด่นขึ้น */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.hero-content {
-    color: white;
-    text-align: center;
-    z-index: 1;
-}
-
-/* ส่วนกล่องข้อมูลติดต่อ */
-.contact-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 60px 20px;
-    background-color: #F8F9F9;
-    flex-wrap: wrap; /* ให้ตกบรรทัดได้เมื่อจอเล็ก */
-}
-.contact-card {
-    background: #ffffff;
-    width: 100%;
-    max-width: 450px;
-    padding: 40px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    text-align: left; /* จัดซ้ายให้อ่านง่ายขึ้น */
-    transition: transform 0.3s ease;
-}
-.contact-card:hover {
-    transform: translateY(-5px); /* IxD: ลูกเล่นเด้งขึ้นตอนเอาเมาส์ชี้ */
-}
-.contact-card p {
-    color: var(--text-color);
-    margin-bottom: 15px;
-    line-height: 1.8;
-}
-
-/* ส่วนแบบฟอร์ม */
-.form-section {
-    background-color: #FFFFFF;
-    padding-bottom: 80px;
-}
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--secondary-color);
-    font-weight: bold;
-}
-.form-control {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #ECF0F1;
-    border-radius: 8px;
-    font-family: var(--font-main);
-    font-size: 1rem;
-    transition: border-color 0.3s, background-color 0.3s;
-    background-color: #F8F9F9;
-}
-.form-control:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    background-color: #FFFFFF;
-}
-
-/* กล่องแจ้งเตือนผลลัพธ์ */
-#response-message {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    display: none;
-    font-weight: bold;
-}
-.success-msg { background-color: #D4EDDA; color: #155724; border: 1px solid #C3E6CB; }
-.error-msg { background-color: #F8D7DA; color: #721C24; border: 1px solid #F5C6CB; }
-
-/* Responsive สำหรับมือถือ */
-@media (max-width: 768px) {
-    .contact-hero { height: 40vh; }
-    .hero-content h1 { font-size: 2.2rem !important; }
-    .contact-wrapper { padding: 40px 20px; gap: 20px; }
-    .contact-card { padding: 30px 20px; }
-}
-/* =========================================
-   อัปเดต: ทำขอบสี่เหลี่ยมทุกอันให้เป็นขอบมน (Rounded Corners)
-========================================= */
-
-/* 1. กรอบเส้นขอบใหญ่ทั้งหมด (Section wrappers) */
-.outline-border {
-    border-radius: 16px;
-    overflow: hidden; /* ป้องกันเนื้อหาหรือรูปภาพพื้นหลังทะลุขอบมนออกมา */
-}
-
-/* 2. กรอบปุ่มกดเลือกหลักสูตร (Tabs) */
-.tab-btn {
-    border-radius: 12px;
-}
-
-/* 3. กล่องเนื้อหาของหลักสูตร */
-.program-content {
-    border-radius: 12px;
-}
-
-/* 4. กล่องปุ่มกด TCAS (Accordion) */
-.accordion {
-    border-radius: 10px;
-    margin-bottom: 10px; /* จับแยกกันนิดนึงเพื่อให้เห็นความมนของแต่ละปุ่มชัดขึ้น */
-    border-bottom: 1px solid var(--border-color) !important; /* เติมเส้นขอบล่างกลับมา */
-}
-
-/* เวลาที่ Accordion ถูกกดเปิด ให้มุมด้านล่างเหลี่ยมเพื่อเชื่อมกับเนื้อหาข้างใน (IxD ที่ดี) */
-.accordion.active {
-    border-radius: 10px 10px 0 0;
-    margin-bottom: 0;
-    border-bottom: none !important;
-}
-
-/* ส่วนของกล่องเนื้อหาที่หล่นลงมา (Panel) */
-.panel {
-    border-radius: 0 0 10px 10px; /* มนเฉพาะขอบล่างซ้ายและขวา */
-    margin-bottom: 10px;
-}
-.panel.show-border {
-    border-bottom: 1px solid var(--border-color) !important;
-}
-
-/* 5. กล่องคะแนนสีเทา (TGAT, A-Level) */
-.score-grid {
-    border-radius: 12px;
-}
-
-/* 6. ปุ่ม APPLY NOW */
-.brutal-btn {
-    border-radius: 10px;

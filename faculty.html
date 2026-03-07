@@ -5,52 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faculty | IoT Engineering KMITL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        body {
-            background-image: url('images/Circuit.png'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed; 
-        }
-        .formal-card {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 12px; padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 1px solid var(--border-color);
-        }
-    </style>
+    <link rel="stylesheet" href="css/admission-style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
     <div id="header-placeholder"></div>
 
-    <main class="mit-container" style="max-width: 1200px; padding: 40px 20px;">
+    <main class="mit-container">
         
-        <section class="hero-section outline-border" style="background-color: #1A1A1A; color: white; padding: 60px 40px; text-align: left; height: auto; display: block; background-image: none;">
-            <h1 class="massive-text" style="color: white; margin: 0; line-height: 1; border: none;">FACULTY.</h1>
-            <p class="sub-hero" style="color: #E0E0E0; margin-top: 15px; font-weight: 400;">คณาจารย์ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ และ ภาควิชาฟิสิกส์</p>
-            
-            <div style="margin-top: 30px; border-top: 2px solid white; padding-top: 20px;">
-                <p style="margin: 0; color: #CCCCCC; font-size: 1rem; line-height: 1.8;">
-                    <strong>COMMITMENT:</strong> มุ่งมั่นพัฒนานักศึกษาและงานวิจัยให้ล้ำหน้า สร้างบุคลากรและวิศวกรชั้นแนวหน้าของประเทศ เพื่อรับมือกับความท้าทายในยุคดิจิทัลและอุตสาหกรรม 4.0
-                </p>
+        <section class="outline-border" data-aos="fade-up" data-aos-delay="200">
+            <h1 class="massive-text">FACULTY.</h1>
+            <p class="sub-hero">คณาจารย์ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ และ ภาควิชาฟิสิกส์</p>
+            <div class="vision-box">
+                <p><strong>COMMITMENT:</strong> มุ่งมั่นพัฒนานักศึกษาและงานวิจัยให้ล้ำหน้า สร้างบุคลากรและวิศวกรชั้นแนวหน้าของประเทศ เพื่อรับมือกับความท้าทายในยุคดิจิทัลและอุตสาหกรรม 4.0</p>
             </div>
         </section>
 
-        <section class="outline-border formal-card" style="margin-top: 20px;">
+        <section class="outline-border" data-aos="fade-up" data-aos-delay="200">
             <h2 class="section-title">IoT ENGINEERING</h2>
-            <div id="iot-faculty-container" class="grid-3-col" style="margin-top: 20px;">
-                <p>กำลังโหลดข้อมูล...</p>
+            <div id="iot-faculty-container" class="grid-3-col">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
             </div>
         </section>
 
-        <section class="outline-border formal-card" style="margin-top: 20px;">
+        <section class="outline-border" data-aos="fade-up" data-aos-delay="200">
             <h2 class="section-title">PHYSICS</h2>
-            <div id="physics-faculty-container" class="grid-3-col" style="margin-top: 20px;">
-                <p>กำลังโหลดข้อมูล...</p>
+            <div id="physics-faculty-container" class="grid-3-col">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
             </div>
         </section>
 
@@ -72,12 +60,12 @@
 
                 if (result.status === 'success') {
                     result.data.forEach(ajarn => {
-                        // ปรับให้การ์ดอาจารย์เข้ากับธีม formal-card
+                        // ✨ ใช้คลาส tab-btn ให้การ์ดดูคลีนและมีลูกเล่นตอนเอาเมาส์ชี้
                         const card = `
-                            <div class="outline-border formal-card" style="padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.95);">
-                                <img src="${ajarn.image_path}" onerror="this.src='https://via.placeholder.com/120'" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--accent-color);">
-                                <h3 style="font-size: 1.1rem; color: var(--text-color);">${ajarn.fullname}</h3>
-                                <p style="font-size: 0.9rem; color: #555;">${ajarn.position}</p>
+                            <div class="tab-btn" style="text-align: center; display: flex; flex-direction: column; align-items: center; background: var(--card-bg);">
+                                <img src="${ajarn.image_path}" onerror="this.src='https://via.placeholder.com/120'" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--bg-body);">
+                                <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">${ajarn.fullname}</h3>
+                                <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">${ajarn.position}</p>
                             </div>
                         `;
                         if (ajarn.department === 'IoT') {
@@ -92,6 +80,14 @@
             }
         }
         loadFaculty();
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // ความเร็วของแอนิเมชัน (มิลลิวินาที)
+            once: true,    // ให้แสดงแอนิเมชันแค่ครั้งเดียวตอนเลื่อนลงมาเจอ
+            offset: 100    // เลื่อนจอมาถึงก่อน 100px ค่อยแสดง
+        });
     </script>
 </body>
 </html>
