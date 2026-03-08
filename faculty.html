@@ -62,9 +62,11 @@
                 if (result.status === 'success') {
                     result.data.forEach(ajarn => {
                         // ✨ ใช้คลาส tab-btn ให้การ์ดดูคลีนและมีลูกเล่นตอนเอาเมาส์ชี้
+                        // ✨ ใช้คลาส tab-btn ให้การ์ดดูคลีนและมีลูกเล่นตอนเอาเมาส์ชี้
                         const card = `
                             <div class="tab-btn" style="text-align: center; display: flex; flex-direction: column; align-items: center; background: var(--card-bg);">
-                                <img src="${ajarn.image_path}" onerror="this.src='https://via.placeholder.com/120'" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--bg-body);">
+                                <img src="${ajarn.image_path}" onerror="this.src='https://via.placeholder.com/150x200'" style="width: 160px; height: 220px; border-radius: 16px; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--bg-body); box-shadow: 0 8px 20px rgba(0,0,0,0.08);">
+                                
                                 <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">${ajarn.fullname}</h3>
                                 <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">${ajarn.position}</p>
                             </div>
