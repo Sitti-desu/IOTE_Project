@@ -111,3 +111,23 @@ function moveSlide(direction) {
     const offset = -currentIndex * 100;
     slider.style.transform = `translateX(${offset}%)`;
 }
+
+function copyEmail(element) {
+    const emailToCopy = "iote@kmitl.ac.th";
+    
+    // สั่งคัดลอกลง Clipboard
+    navigator.clipboard.writeText(emailToCopy).then(() => {
+        // หา Tooltip ที่ซ่อนอยู่ข้างในปุ่มที่โดนกด
+        const tooltip = element.querySelector('.copy-tooltip');
+        
+        // สั่งให้โชว์
+        tooltip.classList.add('show');
+        
+        // ตั้งเวลาให้ซ่อนไปเองหลังผ่านไป 2 วินาที (2000 ms)
+        setTimeout(() => {
+            tooltip.classList.remove('show');
+        }, 2000);
+    }).catch(err => {
+        console.error('ไม่สามารถคัดลอกข้อความได้: ', err);
+    });
+}

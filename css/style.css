@@ -289,3 +289,40 @@ body {
     .about-text h2::after, .about-text h3::after { margin: 10px auto; }
     .about-text { text-align: center; }
 }
+.copy-tooltip {
+    visibility: hidden;
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 12px;
+    position: absolute;
+    z-index: 1;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-size: 0.85rem;
+    font-family: var(--font-main);
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.copy-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--secondary-color) transparent transparent transparent;
+}
+
+.copy-tooltip.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); 
+}
