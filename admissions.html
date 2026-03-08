@@ -10,6 +10,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <div id="particles-js"></div>
     <div id="header-placeholder"></div>
 
     <main class="mit-container">
@@ -68,7 +69,7 @@
                 <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #eaeaea;">
                     <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 0.95rem;">ดาวน์โหลดเอกสารหลักสูตรฉบับเต็มเพื่อดูรายวิชา แผนการศึกษา และข้อกำหนดต่างๆ ของภาควิชา</p>
                     <a href="continuing.html" target="_blank" class="brutal-btn" style="padding: 12px 25px; font-size: 1rem; margin-top: 0;">
-                        <i class="fas fa-file-pdf" style="margin-right: 8px;"></i> ดูเอกสารหลักสูตร (PDF)
+                        <i style="margin-right: 8px;"></i> ดูหน้าหลักสูตร
                     </a>
                 </div>
             </div>
@@ -162,6 +163,48 @@
             duration: 800, // ความเร็วของแอนิเมชัน (มิลลิวินาที)
             once: true,    // ให้แสดงแอนิเมชันแค่ครั้งเดียวตอนเลื่อนลงมาเจอ
             offset: 100    // เลื่อนจอมาถึงก่อน 100px ค่อยแสดง
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#E67E22" }, 
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.4, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#E67E22",
+                    "opacity": 0.3,
+                    "width": 1.5
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2, 
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                }
+            },
+            "interactivity": {
+                "detect_on": "window", /* เปลี่ยนเป็น window เพื่อให้จับเมาส์ได้ทั้งหน้าจอ */
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" }, 
+                    "onclick": { "enable": true, "mode": "push" }, 
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 180, "line_linked": { "opacity": 0.8 } },
+                    "push": { "particles_nb": 3 }
+                }
+            },
+            "retina_detect": true
         });
     </script>
 </body>
