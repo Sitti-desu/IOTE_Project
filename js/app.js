@@ -131,3 +131,227 @@ function copyEmail(element) {
         console.error('ไม่สามารถคัดลอกข้อความได้: ', err);
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const iotContainer = document.getElementById('iot-faculty-container');
+    if (iotContainer) {
+        loadFaculty();
+    }
+});
+
+async function loadFaculty() {
+    try {
+        const response = await fetch('api/get_faculty.php');
+        const result = await response.json();
+
+        const iotContainer = document.getElementById('iot-faculty-container');
+        const phyContainer = document.getElementById('physics-faculty-container');
+        
+        // กันเหนียว เผื่อไปหน้าอื่นที่ไม่มีกล่องนี้จะได้ไม่ Error
+        if (!iotContainer || !phyContainer) return; 
+
+        iotContainer.innerHTML = '';
+        phyContainer.innerHTML = '';
+
+        if (result.status === 'success') {
+            result.data.forEach(ajarn => {
+                const emailText = ajarn.email ? ajarn.email : "";
+                const expText = ajarn.expertise ? ajarn.expertise : "";
+                const eduText = ajarn.education ? ajarn.education : "ยังไม่มีข้อมูลประวัติการศึกษาในระบบ";
+                
+                const card = `
+                    <div class="tab-btn faculty-card" 
+                         onclick="openProfileModal(this)" 
+                         data-id="${ajarn.id}" 
+                         data-name="${ajarn.fullname}" 
+                         data-pos="${ajarn.position}" 
+                         data-img="${ajarn.image_path}" 
+                         data-edu="${eduText}" 
+                         data-email="${emailText}" 
+                         data-expertise="${expText}" 
+                         /* ... โค้ดส่วน CSS ด้านหลังเหมือนเดิม ... */
+                         style="text-align: center; display: flex; flex-direction: column; align-items: center; background: var(--card-bg); cursor: pointer; transition: transform 0.3s;">
+                        <img src="${ajarn.image_path}" onerror="this.src='https://via.placeholder.com/150x200'" style="width: 160px; height: 220px; border-radius: 16px; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--bg-body); box-shadow: 0 8px 20px rgba(0,0,0,0.08);">
+                        <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">${ajarn.fullname}</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">${ajarn.position}</p>
+                        ${expText ? `<p style="font-size: 0.8rem; color: var(--primary-color); margin-top: 10px; font-weight: bold;"><i class="fas fa-star"></i> ${expText}</p>` : ''}
+                    </div>
+                `;
+                
+                if (ajarn.department === 'IoT') {
+                    iotContainer.innerHTML += card;
+                } else {
+                    phyContainer.innerHTML += card;
+                }
+            });
+
+            // ตะโกนบอก AOS ให้สแกนหน้าเว็บใหม่
+            setTimeout(() => {
+                if (typeof AOS !== 'undefined') {
+                    AOS.refresh();
+                }
+            }, 100);
+        }
+    } catch (error) {
+        console.error("Error loading faculty:", error);
+    }
+}
+
+function openFilterModal() {
+    document.getElementById('filterModal').style.display = 'flex';
+}
+
+function closeFilterModal() {
+    document.getElementById('filterModal').style.display = 'none';
+}
+
+function applyFilter() {
+    const checkboxes = document.querySelectorAll('.exp-cb:checked');
+    const selectedExpGroups = Array.from(checkboxes).map(cb => cb.value); 
+    const cards = document.querySelectorAll('.faculty-card');
+
+    // 1. ซ่อน/โชว์การ์ดอาจารย์แต่ละคน
+    cards.forEach(card => {
+        if (selectedExpGroups.length === 0) {
+            card.style.display = 'flex';
+            return;
+        }
+
+        const cardExp = card.getAttribute('data-expertise');
+        if (!cardExp) {
+            card.style.display = 'none'; 
+            return;
+        }
+
+        const cardExpLower = cardExp.toLowerCase();
+        const hasMatch = selectedExpGroups.some(group => {
+            const keywords = group.split(','); 
+            return keywords.some(kw => cardExpLower.includes(kw.toLowerCase().trim()));
+        });
+
+        if (hasMatch) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // 2. ✨ เพิ่มโค้ดส่วนนี้: ตรวจสอบและซ่อนกล่อง Section ที่ว่างเปล่า ✨
+    const iotContainer = document.getElementById('iot-faculty-container');
+    const phyContainer = document.getElementById('physics-faculty-container');
+
+    // ฟังก์ชันช่วยเช็คความว่างเปล่า
+    const toggleEmptySection = (container) => {
+        if (!container) return; // ป้องกัน Error ถ้าหาล่องไม่เจอ
+        
+        // นับจำนวนการ์ดอาจารย์ที่ยัง "โชว์อยู่" ในกล่องนี้
+        const visibleCards = Array.from(container.querySelectorAll('.faculty-card')).filter(card => card.style.display !== 'none');
+        
+        // หากล่อง <section class="outline-border"> ที่ครอบ container นี้อยู่
+        const parentSection = container.closest('.outline-border');
+        
+        if (parentSection) {
+            if (visibleCards.length === 0) {
+                parentSection.style.display = 'none'; // ซ่อนทั้งกรอบขาวถ้าไม่มีอาจารย์เลย
+            } else {
+                parentSection.style.display = 'block'; // โชว์กรอบขาวกลับมาถ้ามีอาจารย์
+            }
+        }
+    };
+
+    // สั่งเช็คทั้ง 2 ภาควิชา
+    toggleEmptySection(iotContainer);
+    toggleEmptySection(phyContainer);
+
+    closeFilterModal();
+}
+// ==========================================
+// ระบบ Popup ประวัติ และ ส่งข้อความหาอาจารย์
+// ==========================================
+function openProfileModal(element) {
+    document.getElementById('modal-img').src = element.getAttribute('data-img');
+    document.getElementById('modal-name').innerText = element.getAttribute('data-name');
+    document.getElementById('modal-pos').innerText = element.getAttribute('data-pos');
+    document.getElementById('modal-faculty-id').value = element.getAttribute('data-id');
+
+    // 1. จัดการส่วนของ Email
+    const email = element.getAttribute('data-email');
+    const emailLink = document.getElementById('modal-email-link');
+    const emailText = document.getElementById('modal-email-text');
+    
+    if (email && email !== "null") {
+        emailText.innerText = email;
+        emailLink.href = `mailto:${email}`; // ทำให้พอกดปุ๊บ เปิดแอปส่งเมลทันที
+        emailLink.style.display = 'inline-flex';
+    } else {
+        emailLink.style.display = 'none'; // ซ่อนปุ่มถ้าไม่มีอีเมล
+    }
+
+    // 2. จัดการส่วนของประวัติการศึกษา (แปลงข้อความยาวๆ ให้ขึ้นบรรทัดใหม่)
+    let eduRaw = element.getAttribute('data-edu');
+    
+    // โค้ดดักจับคำเพื่อแยก ป.ตรี ป.โท ป.เอก
+    let formattedEdu = eduRaw
+        .replace(/(Ph\.D\.|D\.Eng\.|Doctor|วิทยาศาสตรดุษฎีบัณฑิต|ปรัชญาดุษฎีบัณฑิต|วิศวกรรมศาสตรดุษฎีบัณฑิต|ปร\.ด\.|วศ\.ด\.)/gi, '<br><strong style="color:var(--primary-color);">🎓 ป.เอก:</strong> $1')
+        .replace(/(M\.Eng\.|M\.Sc\.|M\.A\.|M\.S\.|วศ\.ม\.|วท\.ม\.)/gi, '<br><strong style="color:var(--primary-color);">🎓 ป.โท:</strong> $1')
+        .replace(/(B\.Eng\.|B\.Sc\.|อส\.บ\.|วศ\.บ\.|วท\.บ\.|กศ\.บ\.|ปริญญาตรี|ปวส\.)/gi, '<br><strong style="color:var(--primary-color);">🎓 ป.ตรี:</strong> $1');
+
+    // ลบตัวเชื่อม "และ", "," ที่ติดมาตรงรอยต่อบรรทัดให้คลีนขึ้น
+    formattedEdu = formattedEdu.replace(/, <br>/g, '<br>').replace(/ และ <br>/g, '<br>').replace(/และ <br>/g, '<br>');
+    
+    // ลบ <br> ตัวแรกสุดทิ้ง (ถ้ามี) เพื่อไม่ให้บรรทัดบนสุดเว้นว่าง
+    if (formattedEdu.startsWith('<br>')) {
+        formattedEdu = formattedEdu.substring(4);
+    }
+
+    // เอาไปแสดงผลแบบ HTML
+    document.getElementById('modal-edu').innerHTML = formattedEdu;
+    
+    // โชว์หน้าต่าง
+    document.getElementById('profileModal').style.display = 'flex';
+}
+
+function closeProfileModal() {
+    document.getElementById('profileModal').style.display = 'none';
+    document.getElementById('contact-faculty-form').reset(); // ล้างฟอร์มตอนปิด
+}
+
+async function submitMessage(event) {
+    event.preventDefault(); // ป้องกันหน้าเว็บกระตุกรีเฟรช
+    
+    const btn = document.getElementById('btn-submit-msg');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> กำลังส่งข้อมูล...';
+    btn.disabled = true;
+
+    // รวบรวมข้อมูลจากฟอร์ม
+    const data = {
+        faculty_id: document.getElementById('modal-faculty-id').value,
+        sender_name: document.getElementById('sender-name').value,
+        sender_email: document.getElementById('sender-email').value,
+        message: document.getElementById('sender-msg').value
+    };
+
+    try {
+        // ยิงข้อมูลไปที่ API (ที่เรากำลังจะสร้างในสเต็ป 3)
+        const response = await fetch('api/send_message.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if(result.status === 'success') {
+            alert('🎉 ส่งข้อความสำเร็จ! ข้อมูลถูกส่งเข้าฐานข้อมูลแล้ว รอการติดต่อกลับจากอาจารย์นะครับ');
+            closeProfileModal();
+        } else {
+            alert('❌ เกิดข้อผิดพลาด: ' + result.message);
+        }
+    } catch (error) {
+        alert('❌ ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้ กรุณาลองใหม่');
+    }
+    
+    // คืนค่าปุ่มกลับมาเหมือนเดิม
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i> ส่งข้อความหาอาจารย์';
+    btn.disabled = false;
+}

@@ -16,6 +16,59 @@
 
     <div id="header-placeholder"></div>
 
+    <div id="profileModal" style="display: none; position: fixed; z-index: 2500; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(8px); justify-content: center; align-items: center;">
+            
+            <div style="background: #fff; border-radius: 20px; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; display: flex; flex-direction: column; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+                <button onclick="closeProfileModal()" style="position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 1.5rem; color: #888; cursor: pointer; z-index: 10;"><i class="fas fa-times"></i></button>
+
+                <div style="display: flex; flex-wrap: wrap; padding: 30px;">
+                    <div style="flex: 1; min-width: 250px; text-align: center; border-right: 1px solid #eee; padding-right: 20px; margin-bottom: 20px;">
+                        <img id="modal-img" src="" style="width: 180px; height: 250px; border-radius: 16px; object-fit: cover; border: 4px solid var(--bg-body); box-shadow: 0 8px 20px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                        <h3 id="modal-name" style="font-size: 1.4rem; color: var(--text-main); margin-bottom: 5px;"></h3>
+                        <p id="modal-pos" style="font-size: 1rem; color: var(--text-muted); margin-bottom: 10px;"></p>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <a id="modal-email-link" href="#" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px; background: #fff3e0; color: var(--primary-color); border-radius: 50px; text-decoration: none; font-size: 0.9rem; font-weight: bold; border: 1px solid #ffe0b2; transition: 0.3s;">
+                                <i class="fas fa-envelope"></i> <span id="modal-email-text"></span>
+                            </a>
+                        </div>
+                        
+                        <div style="text-align: left; background: #f9f9f9; padding: 15px; border-radius: 12px; border-left: 4px solid var(--primary-color);">
+                            <p style="font-size: 0.9rem; color: var(--primary-color); margin-bottom: 8px; font-weight: bold;"><i class="fas fa-graduation-cap"></i> ประวัติการศึกษา</p>
+                            <p id="modal-edu" style="font-size: 0.85rem; color: #555; line-height: 1.8;"></p>
+                        </div>
+                    </div>
+
+                    <div style="flex: 1.5; min-width: 300px; padding-left: 20px; display: flex; flex-direction: column;">
+                        <h4 style="font-size: 1.2rem; color: var(--primary-color); margin-bottom: 15px;"><i class="fas fa-envelope-open-text"></i> สนใจร่วมงานวิจัย / ปรึกษาโครงงาน</h4>
+                        
+                        <form id="contact-faculty-form" onsubmit="submitMessage(event)">
+                            <input type="hidden" id="modal-faculty-id" name="faculty_id">
+                            
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; font-size: 0.9rem; margin-bottom: 5px; color: #555;">ชื่อ-นามสกุล ของคุณ</label>
+                                <input type="text" id="sender-name" required placeholder="นาย/นางสาว ..." style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; outline: none;">
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; font-size: 0.9rem; margin-bottom: 5px; color: #555;">อีเมลติดต่อกลับ</label>
+                                <input type="email" id="sender-email" required placeholder="example@gmail.com" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; outline: none;">
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; font-size: 0.9rem; margin-bottom: 5px; color: #555;">หัวข้อวิจัยที่สนใจ / ข้อความถึงอาจารย์</label>
+                                <textarea id="sender-msg" required rows="4" placeholder="พิมพ์ข้อความของคุณที่นี่..." style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; resize: vertical; outline: none;"></textarea>
+                            </div>
+
+                            <button type="submit" id="btn-submit-msg" style="width: 100%; padding: 14px; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-size: 1.05rem; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(230,126,34,0.3);">
+                                <i class="fas fa-paper-plane"></i> ส่งข้อความหาอาจารย์
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <main class="mit-container">
         
         <section class="outline-border" data-aos="fade-up" data-aos-delay="200">
@@ -25,6 +78,56 @@
                 <p><strong>COMMITMENT:</strong> มุ่งมั่นพัฒนานักศึกษาและงานวิจัยให้ล้ำหน้า สร้างบุคลากรและวิศวกรชั้นแนวหน้าของประเทศ เพื่อรับมือกับความท้าทายในยุคดิจิทัลและอุตสาหกรรม 4.0</p>
             </div>
         </section>
+        
+        <div style="text-align: center; margin: 40px 0;" data-aos="fade-up" data-aos-delay="200">
+            <button onclick="openFilterModal()" class="tab-btn active" style="padding: 15px 30px; font-size: 1.1rem; cursor: pointer; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 20px rgba(230,126,34,0.2);">
+                <i class="fas fa-sliders-h"></i> ค้นหาอาจารย์ตามความเชี่ยวชาญ
+            </button>
+        </div>
+
+        <style>
+            /* สไตล์สำหรับซ่อน Checkbox จริง แล้วโชว์ป้าย Tag แทน */
+            .expertise-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 30px; }
+            .exp-tag { cursor: pointer; }
+            .exp-tag input[type="checkbox"] { display: none; /* ซ่อนกล่องสี่เหลี่ยม */ }
+            .exp-tag span {
+                display: inline-flex; align-items: center; gap: 8px;
+                padding: 10px 18px; border-radius: 30px;
+                background: #f0f0f5; color: #555; font-size: 0.95rem;
+                border: 2px solid transparent; transition: all 0.3s ease;
+            }
+            .exp-tag:hover span { background: #e2e2e8; }
+            /* เมื่อถูกติ๊ก ให้เปลี่ยนเป็นสีส้มของภาควิชา */
+            .exp-tag input[type="checkbox"]:checked + span {
+                background: rgba(230, 126, 34, 0.1); color: #E67E22;
+                border-color: #E67E22; font-weight: bold;
+                box-shadow: 0 4px 10px rgba(230, 126, 34, 0.15);
+            }
+        </style>
+
+        <div id="filterModal" style="display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); backdrop-filter: blur(8px); justify-content: center; align-items: center;">
+            <div style="background: #fff; padding: 40px 30px; border-radius: 24px; width: 90%; max-width: 600px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); text-align: center; position: relative;">
+                
+                <h3 style="margin-bottom: 10px; color: #1d1d1f; font-size: 1.5rem;"><i class="fas fa-search"></i> Research Expertise</h3>
+                <p style="color: #777; margin-bottom: 25px; font-size: 0.95rem;">เลือกหัวข้อที่คุณสนใจ (เลือกได้มากกว่า 1 หัวข้อ)</p>
+                
+                <div class="expertise-grid">
+                    <label class="exp-tag"><input type="checkbox" value="IoT,Internet of Things,Smart" class="exp-cb"><span><i class="fas fa-network-wired"></i> IoT & Smart Systems</span></label>
+                    <label class="exp-tag"><input type="checkbox" value="Security,Cyber" class="exp-cb"><span><i class="fas fa-shield-alt"></i> Cyber Security</span></label>
+                    <label class="exp-tag"><input type="checkbox" value="Robotic,Automation,Control" class="exp-cb"><span><i class="fas fa-robot"></i> Robotics & Control</span></label>
+                    <label class="exp-tag"><input type="checkbox" value="Embedded,Microprocessor,Microcontroller" class="exp-cb"><span><i class="fas fa-microchip"></i> Embedded Systems</span></label>
+                    <label class="exp-tag"><input type="checkbox" value="Material,Thin Film,Thermoelectric" class="exp-cb"><span><i class="fas fa-cube"></i> Material Science</span></label>
+                    <label class="exp-tag"><input type="checkbox" value="Optic,Plasmonic,Photonics" class="exp-cb"><span><i class="fas fa-lightbulb"></i> Optics & Photonics</span></label>
+                    <label class="exp-tag"><input type="checkbox" value="Energy,Solar,Battery,Power" class="exp-cb"><span><i class="fas fa-solar-panel"></i> Energy & Power</span></label>
+                    <label class="exp-tag"><input type="checkbox" value="Image,Machine Learning,AI" class="exp-cb"><span><i class="fas fa-brain"></i> AI & Image Processing</span></label>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <button onclick="closeFilterModal()" style="padding: 12px 25px; border: none; background: #f0f0f5; color: #555; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: 0.3s;">ปิดหน้าต่าง</button>
+                    <button onclick="applyFilter()" style="padding: 12px 35px; border: none; background: #E67E22; color: white; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1rem; box-shadow: 0 5px 15px rgba(230,126,34,0.3); transition: 0.3s;">ยืนยันการค้นหา</button>
+                </div>
+            </div>
+        </div>
 
         <section class="outline-border" data-aos="fade-up" data-aos-delay="200">
             <h2 class="section-title">IoT ENGINEERING</h2>
@@ -49,42 +152,6 @@
     <div id="footer-placeholder"></div>
     <script src="js/app.js"></script>
 
-    <script>
-        async function loadFaculty() {
-            try {
-                const response = await fetch('api/get_faculty.php');
-                const result = await response.json();
-
-                const iotContainer = document.getElementById('iot-faculty-container');
-                const phyContainer = document.getElementById('physics-faculty-container');
-                iotContainer.innerHTML = '';
-                phyContainer.innerHTML = '';
-
-                if (result.status === 'success') {
-                    result.data.forEach(ajarn => {
-                        // ✨ ใช้คลาส tab-btn ให้การ์ดดูคลีนและมีลูกเล่นตอนเอาเมาส์ชี้
-                        // ✨ ใช้คลาส tab-btn ให้การ์ดดูคลีนและมีลูกเล่นตอนเอาเมาส์ชี้
-                        const card = `
-                            <div class="tab-btn" style="text-align: center; display: flex; flex-direction: column; align-items: center; background: var(--card-bg);">
-                                <img src="${ajarn.image_path}" onerror="this.src='https://via.placeholder.com/150x200'" style="width: 160px; height: 220px; border-radius: 16px; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--bg-body); box-shadow: 0 8px 20px rgba(0,0,0,0.08);">
-                                
-                                <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">${ajarn.fullname}</h3>
-                                <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">${ajarn.position}</p>
-                            </div>
-                        `;
-                        if (ajarn.department === 'IoT') {
-                            iotContainer.innerHTML += card;
-                        } else {
-                            phyContainer.innerHTML += card;
-                        }
-                    });
-                }
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        }
-        loadFaculty();
-    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
