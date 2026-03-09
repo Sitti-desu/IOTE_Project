@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
     <link rel="stylesheet" href="css/admission-style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="icon" href="images\Logo - Copy.png" type="image/png">
@@ -25,6 +26,111 @@
                 <p><strong>GET IN TOUCH:</strong> พร้อมให้คำปรึกษา แนะนำหลักสูตร และตอบทุกข้อสงสัยเกี่ยวกับการรับสมัคร การเรียนการสอน และการเยี่ยมชมห้องปฏิบัติการ</p>
             </div>
         </section>
+
+        <section class="outline-border" data-aos="fade-up" style="margin-top: 50px;">
+            <h2 class="section-title">CONTACT US</h2>
+            <p style="text-align: center; color: #777; margin-bottom: 30px;">เลือกภาควิชาที่ต้องการติดต่อเพื่อดูแผนที่และรายละเอียด</p>
+
+            <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 30px;">
+                <button id="btn-loc-iot" onclick="switchLocation('iot')" class="tab-btn active" style="padding: 12px 25px; border-radius: 50px; font-size: 1.05rem; cursor: pointer; border: none; background: var(--primary-color); color: white; box-shadow: 0 4px 15px rgba(230,126,34,0.3); font-weight: bold; transition: 0.3s;">
+                    <i class="fas fa-microchip"></i> ภาควิชาวิศวกรรมไอโอที (IOTE)
+                </button>
+                <button id="btn-loc-phy" onclick="switchLocation('phy')" class="tab-btn" style="padding: 12px 25px; border-radius: 50px; font-size: 1.05rem; cursor: pointer; border: none; background: #f0f0f5; color: #555; font-weight: bold; transition: 0.3s;">
+                    <i class="fas fa-atom"></i> ภาควิชาฟิสิกส์ (PHYSICS)
+                </button>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                
+                <div style="flex: 1; min-width: 300px; padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+                    <h3 id="loc-title" style="font-size: 1.5rem; color: var(--text-main); margin-bottom: 10px;">ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</h3>
+                    <p id="loc-building" style="color: var(--primary-color); font-weight: bold; font-size: 1.1rem; margin-bottom: 25px;">
+                        <i class="fas fa-building"></i> อาคาร 12 ชั้น คณะวิศวกรรมศาสตร์
+                    </p>
+                    
+                    <div style="display: flex; gap: 15px; margin-bottom: 20px; color: #555; align-items: flex-start;">
+                        <i class="fas fa-map-marker-alt" style="font-size: 1.2rem; color: #888; margin-top: 3px;"></i>
+                        <span id="loc-address">1 ถนนฉลองกรุง แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร 10520</span>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-bottom: 20px; color: #555; align-items: center;">
+                        <i class="fas fa-phone-alt" style="font-size: 1.1rem; color: #888;"></i>
+                        <span id="loc-phone">+66 2 329 8321</span>
+                    </div>
+
+                    <div style="display: flex; gap: 15px; margin-bottom: 30px; color: #555; align-items: center;">
+                        <i class="fas fa-clock" style="font-size: 1.1rem; color: #888;"></i>
+                        <span>เวลาทำการ: จันทร์ - ศุกร์ (08:30 - 16:30 น.)</span>
+                    </div>
+                    
+                    <a id="loc-nav-btn" href="https://maps.google.com/?q=13.7275048,100.7723961" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 25px; background: #1d1d1f; color: #fff; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 1.05rem; transition: background 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+                        <i class="fas fa-directions"></i> เปิดนำทาง (Google Maps)
+                    </a>
+                </div>
+
+                <div style="flex: 1.5; min-width: 350px; position: relative;">
+                    <iframe id="loc-map-iframe" 
+                            src="https://maps.google.com/maps?q=13.7275048,100.7723961&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" height="100%" style="border:0; min-height: 450px; display: block;" 
+                            allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // ฐานข้อมูลสถานที่
+            const locationData = {
+                iot: {
+                    title: "ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ",
+                    building: "อาคาร 12 ชั้น คณะวิศวกรรมศาสตร์",
+                    address: "1 ถนนฉลองกรุง แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร 10520",
+                    phone: "+66 2 329 8321",
+                    coords: "13.7275048,100.7723961"
+                },
+                phy: {
+                    title: "ภาควิชาฟิสิกส์",
+                    building: "อาคารจุฬาภรณวลัยลักษณ์ 1 คณะวิทยาศาสตร์",
+                    address: "1 ถนนฉลองกรุง แขวงลำปลาทิว เขตลาดกระบัง กรุงเทพมหานคร 10520",
+                    phone: "+66 2 329 8400",
+                    coords: "13.7294979,100.7800822"
+                }
+            };
+
+            function switchLocation(dept) {
+                const data = locationData[dept];
+                
+                // อัปเดตข้อมูลข้อความ
+                document.getElementById('loc-title').innerText = data.title;
+                document.getElementById('loc-building').innerHTML = `<i class="fas fa-building"></i> ${data.building}`;
+                document.getElementById('loc-address').innerText = data.address;
+                document.getElementById('loc-phone').innerText = data.phone;
+                
+                // อัปเดตลิงก์นำทาง (ปุ่มดำ)
+                document.getElementById('loc-nav-btn').href = `https://maps.google.com/?q=${data.coords}`;
+                
+                // อัปเดตแผนที่ iFrame 
+                // ซ่อนแผนที่แป๊บนึงเพื่อสร้าง Effect โหลดข้อมูลใหม่
+                const iframe = document.getElementById('loc-map-iframe');
+                iframe.style.opacity = '0';
+                setTimeout(() => {
+                    iframe.src = `https://maps.google.com/maps?q=${data.coords}&t=&z=17&ie=UTF8&iwloc=&output=embed`;
+                    iframe.onload = () => { iframe.style.opacity = '1'; iframe.style.transition = 'opacity 0.5s'; };
+                }, 200);
+
+                // สลับสีปุ่มที่ถูกกด
+                const btnIot = document.getElementById('btn-loc-iot');
+                const btnPhy = document.getElementById('btn-loc-phy');
+                
+                if (dept === 'iot') {
+                    btnIot.style.background = 'var(--primary-color)'; btnIot.style.color = 'white'; btnIot.style.boxShadow = '0 4px 15px rgba(230,126,34,0.3)';
+                    btnPhy.style.background = '#f0f0f5'; btnPhy.style.color = '#555'; btnPhy.style.boxShadow = 'none';
+                } else {
+                    btnPhy.style.background = 'var(--primary-color)'; btnPhy.style.color = 'white'; btnPhy.style.boxShadow = '0 4px 15px rgba(230,126,34,0.3)';
+                    btnIot.style.background = '#f0f0f5'; btnIot.style.color = '#555'; btnIot.style.boxShadow = 'none';
+                }
+            }
+        </script>
 
         <section class="grid-2-col" style="margin-top: 30px;" data-aos="fade-up" data-aos-delay="200">
             

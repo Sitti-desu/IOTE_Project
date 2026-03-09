@@ -1,13 +1,18 @@
 
 async function loadComponents() {
     try {
-        const headerRes = await fetch('includes/header.html');
+        const noCache = '?v=' + new Date().getTime(); 
+        const headerRes = await fetch('includes/header.html' + noCache);
         const headerHtml = await headerRes.text();
         document.getElementById('header-placeholder').innerHTML = headerHtml;
 
-        const footerRes = await fetch('includes/footer.html');
+        const footerRes = await fetch('includes/footer.html' + noCache);
         const footerHtml = await footerRes.text();
         document.getElementById('footer-placeholder').innerHTML = footerHtml;
+        
+        // ✨ เพิ่มคำสั่งนี้: เรียกฟังก์ชันเซนเซอร์ตรวจจับตอนโหลดเว็บเสร็จ ✨
+        initFloatingMenuObserver();
+        
     } catch (error) {
         console.error("Error loading components:", error);
     }
@@ -354,4 +359,85 @@ async function submitMessage(event) {
     // คืนค่าปุ่มกลับมาเหมือนเดิม
     btn.innerHTML = '<i class="fas fa-paper-plane"></i> ส่งข้อความหาอาจารย์';
     btn.disabled = false;
+}
+
+// ==========================================
+// ระบบ Floating Menu (iPhone Style)
+// ==========================================
+
+// ฟังก์ชันเปิด/ปิด เมนูและหมุนเกียร์
+function toggleIosMenu() {
+    const menu = document.getElementById('ios-nav-popup');
+    const gear = document.getElementById('ios-gear-toggle');
+    
+    // สลับคลาสเพื่อแสดง/ซ่อน และหมุนเกียร์
+    menu.classList.toggle('show');
+    gear.classList.toggle('spin');
+}
+
+// ฟังก์ชันเลื่อนหน้าจอขึ้นบนสุดแบบนุ่มนวล (Smooth Scroll)
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
+    // หลังจากกดเลื่อนขึ้น ให้พับเมนูเก็บด้วยความเรียบร้อย
+    toggleIosMenu();
+}
+
+// ออปชันเสริม: คลิกที่ว่างบนหน้าจอแล้วให้เมนูหุบเก็บเอง
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('ios-nav-popup');
+    const gear = document.getElementById('ios-gear-toggle');
+    
+    // ✨ เพิ่มบรรทัดนี้: เช็คก่อนว่าปุ่มเกียร์โหลดเสร็จโผล่มาบนจอหรือยัง ป้องกัน Error โค้ดพัง ✨
+    if (menu && gear) {
+        if (menu.classList.contains('show') && !gear.contains(event.target) && !menu.contains(event.target)) {
+            toggleIosMenu();
+        }
+    }
+});
+
+// ==========================================
+// เซนเซอร์ซ่อน/โชว์ Floating Menu อัตโนมัติ
+// ==========================================
+function initFloatingMenuObserver() {
+    const floatMenu = document.querySelector('.ios-float-menu');
+    const headerObj = document.getElementById('header-placeholder');
+    const footerObj = document.getElementById('footer-placeholder');
+    
+    if (!floatMenu || !headerObj || !footerObj) return;
+
+    // ตรวจสอบตอนโหลดหน้าเว็บครั้งแรก
+    checkVisibility();
+
+    // ตรวจสอบตลอดเวลาที่เราไถหน้าจอ (Scroll)
+    window.addEventListener('scroll', checkVisibility);
+
+    function checkVisibility() {
+        // หาพิกัดของ Header และ Footer ว่าอยู่ตรงไหนของจอ
+        const headerRect = headerObj.getBoundingClientRect();
+        const footerRect = footerObj.getBoundingClientRect();
+        
+        // เช็คว่ามันโผล่เข้ามาในพื้นที่หน้าจอ (Viewport) หรือไม่
+        const headerInView = (headerRect.bottom > 0 && headerRect.top < window.innerHeight);
+        const footerInView = (footerRect.bottom > 0 && footerRect.top < window.innerHeight);
+        
+        if (headerInView || footerInView) {
+            // ✨ ถ้าเห็น Header หรือ Footer -> สั่งซ่อนปุ่มเกียร์ ✨
+            floatMenu.classList.remove('show-btn'); 
+            
+            // ถ้าเมนูกำลังกางอยู่ ให้พับเก็บให้เรียบร้อยด้วย
+            const menuPopup = document.getElementById('ios-nav-popup');
+            const gearBtn = document.getElementById('ios-gear-toggle');
+            if (menuPopup && menuPopup.classList.contains('show')) {
+                menuPopup.classList.remove('show');
+                gearBtn.classList.remove('spin');
+            }
+        } else {
+            // ✨ ถ้าไม่เห็นทั้งคู่ (อยู่กลางเว็บ) -> สั่งโชว์ปุ่มเกียร์ ✨
+            floatMenu.classList.add('show-btn'); 
+        }
+    }
 }
