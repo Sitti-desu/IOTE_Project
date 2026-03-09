@@ -10,44 +10,126 @@ CREATE TABLE projects (
 
 INSERT INTO projects (title, description, image, category, link) VALUES
 (
-'IoT Projects',
-'Design and develop connected devices, sensor systems, and smart applications for real-world problem solving.',
-'images/doraemon1.png',
+'Thailand Cyber Security Product and Service Awards 2025',
+'นักศึกษาภาควิชาวิศวกรรมไอโอทีและสารสนเทศ คณะวิศวกรรมศาสตร์ สจล.  ได้รับ รางวัลนวัตกรด้านความมั่นคงปลอดภัยไซเบอร์รุ่นใหม่ ในผลงานชื่อ AI-Based Network Scanning Analysis System โดยมี
+1. นายชินวัตร ศิลาธนสาร
+2. นายฐิติพันธุ์ สอนโคตร
+3. นายอภิรัก จีนทั่ง
+  จากสำนักงานคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติ (สกมช.) จากการประกวด ผลิตภัณฑ์และบริการในภาคอุตสาหกรรมด้านการรักษาความมั่นคงปลอดภัยไซเบอร์ ประจำปี 2568 (Thailand Cyber Security Product and Service Awards 2025) ซึ่งเป็นรางวัลในระดับชาติ โดยมี ผศ.ดร.อรรถพล ป้อมสถิตย์ เป็นอาจารย์ที่ปรึกษา
+ โดยนักศึกษาสาขาวิศวกรรมไอโอทีและสารสนเทศเข้าร่วมพิธีมอบรางวัล ซึ่งจะจัดขึ้นในวันอังคารที่ 23 ธันวาคม 2568 ณ ห้องพีโอนี ชั้น 6 โรงแรม ทีเค. พาเลซ แอนด์คอนเวนชั่น กรุงเทพมหานคร',
+'images/index-images/student_project/cyber.png',
 'Project',
 'projects.html'
 ),
 (
-'Cyber Lab',
-'Explore hands-on learning in modern laboratories equipped for networking, software, and system experimentation.',
-'images/aj2.png',
+'Hackathon ปราบซื้อเสียง ของ กกต.',
+'ขอแสดงความยินดีกับนักศึกษา 
+ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ คณะวิศวกรรมศาสตร์ สจล.
+ที่เข้าร่วมการแข่งขัน “Hackathon ปราบซื้อเสียง” ของ กกต.
+ณ มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต และสามารถคว้ารางวัลมาได้สำเร็จ
+รางวัลรองชนะเลิศอันดับที่ 1
+รางวัล Popular Vote
+สมาชิกทีม DemocraSee
+นายวีระภัทร แสงอรุณ
+นายพรเกียรติ รอบคอบ
+นายณัฐพัชร์ เจียรยุทธศักดิ์
+นายพันวินทร์ ชุติกาญจนโรจน์
+นายโกเมศ ประกอบผล
+การแข่งขันมุ่งเน้นการนำเสนอ “ไอเดีย วิธีการ และนวัตกรรม” เพื่อร่วมแก้ไขปัญหาการซื้อเสียง สำหรับประชาชนและ กกต. อย่างสร้างสรรค์และเป็นรูปธรรม ',
+'images/index-images/student_project/hackathon.png',
 'Lab',
 'projects.html'
 ),
 (
-'Smart Systems',
-'Combine hardware, software, and data to create intelligent systems that support future technology solutions.',
-'images/aj3.png',
+'The Huawei National ICT Competition Awards 2025–2026',
+'ขอแสดงความยินดีกับนักศึกษา 
+ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ คณะวิศวกรรมศาสตร์
+นายวิวรรธน์ สุวรรณสิทธิ์ (66010769) จากทีม M.I.T 
+โดยมีอาจารย์ที่ปรึกษา ผู้ช่วยศาสตราจารย์นิจจารีย์ สัตยารักษ์ 
+ที่ได้รับรางวัล ชนะเลิศ  Network Track 
+ในงาน The Huawei National ICT Competition Awards 2025–2026 
+วันที่ 18 ธันวาคม 2568
+ณ หัวเว่ย เทคโนโลยี (ประเทศไทย) อาคาร G Tower Grand Rama9',
+'images/index-images/student_project/huawei.png',
 'Project',
 'projects.html'
 ),
 (
-'Embedded System Design',
-'Develop embedded controllers and smart device prototypes through hardware and software integration.',
-'images/aj1.png',
-'Lab',
+'SMART FACTORY Hackathon 2025',
+'ขอแสดงความยินดีกับนักศึกษาของภาควิชาวิศวกรรมไอโอทีและสารสนเทศ
+คณะวิศวกรรมศาสตร์ที่ได้รับรางวัล รางวัลชมเชย 
+จากการแข่งขัน SMART FACTORY Hackathon 2025
+แข่งขันวันที่ 15 ธันวาคม 2568
+ณ บริษัท โซนี่ ดีไวซ์ เทคโนโลยี (ประเทศไทย) จังหวัดปทุมธานี
+ทีม Alice in Wonderland
+นางสาวณปภัช พรรณศิลป์ (67010253) 
+นางสาวอันนา สิงห์สถิตย์ (67011043) 
+นางสาวญาดาวดี กลิ่นสมิทธิ์ (67011430) 
+ทีม Factory Reset
+นายณัฐวินท์ แต้มประเสริฐ (67050168) 
+นายธีรภัทร ราชปัก (67050248) 
+นายรติภัทร บัวแก้ว (67050465) 
+อาจารย์ที่ปรึกษา: ผู้ช่วยศาสตราจารย์สรพงษ์ วชิรรัตนพรกุล ',
+'images/index-images/student_project/smart.png',
+'Project',
 'projects.html'
 ),
 (
-'Network & Security Practice',
-'Learn networking and cybersecurity concepts through practical experiments and system configuration.',
-'images/aj2.png',
-'Lab',
+'AI & Robotics Hackathon and Competitions 2025',
+'ขอแสดงความยินดีกับทีม Threeory 
+นักศึกษาชั้นปีที่ 3 ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ 
+คณะวิศวกรรมศาสตร์ 
+ที่ได้รับรางวัล รองชนะเลิศอันดับ 1
+จากการแข่งขัน
+AI & Robotics Hackathon and Competitions 2025
+by the MIT Media Lab & Bangkok Bank
+แข่งขันวันที่ 17–19 ธันวาคม 2568
+ณ Cloud11 กรุงเทพฯ
+รายชื่อสมาชิกทีม Threeory
+นางสาวบุญนิสา สำลี (66010439) 
+นายวีระภัทร แสงอรุณ (66010781) 
+นายชินวัตร ศิลาธนสาร (66011340) 
+อาจารย์ที่ปรึกษา: ผู้ช่วยศาสตราจารย์สรพงษ์ วชิรรัตนพรกุล',
+'images/index-images/student_project/ai.png',
+'Project',
 'projects.html'
 ),
 (
 'AI and Data Applications',
-'Apply data analysis and intelligent algorithms to solve real-world engineering problems.',
-'images/aj3.png',
+'ขอแสดงความยินดีกับทีม RedBanana
+
+นักศึกษาจากภาควิชาวิศวกรรมไอโอทีและสารสนเทศ
+คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ร่วมกับนักศึกษาจากคณะบริหารธุรกิจ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+
+คว้ารางวัล รองชนะเลิศอันดับ 1 (1st Runner-up) 
+จากการแข่งขัน “Vision-Language Model for Smart Manufacturing Hackathon”
+จัดโดย สมาคมปัญญาประดิษฐ์ประเทศไทย (AFTI) ร่วมกับภาคีภาครัฐและเอกชน
+จัดขึ้นระหว่างวันที่ 29–30 พฤศจิกายน 2025
+ณ โรงแรมแมนดาริน กรุงเทพฯ
+
+ผลงาน: “RedBanana”
+ระบบจำลองการตรวจคุณภาพของแผงวงจรพิมพ์ (PCB) เพื่อช่วยอุตสาหกรรมการผลิตอิเล็กทรอนิกส์ตรวจจับความเสียหายได้อย่างแม่นยำและรวดเร็ว
+Core Feature – PCB Defect Detection
+ใช้เทคนิค Deep Learning ตรวจจับและระบุประเภทของความเสียหาย เช่น
+Missing Hole, Mouse Bite, Open Circuit, Short Circuit, Spur, Spurious
+พร้อมทั้งบันทึกภาพและระบุตำแหน่งของความเสียหายบน Dashboard
+AI Agent ช่วยวิเคราะห์และจัดทำรายงานผลการตรวจสอบ
+รวมถึง รายงานประเมินความเสียหายและผลกระทบทางการเงิน เพื่อช่วยในการตัดสินใจของผู้บริหาร
+
+สมาชิกทีม RedBanana
+(วิศวกรรมระบบไอโอทีและสารสนเทศ – คณะวิศวกรรมศาสตร์ สจล.)
+1.นายเพชรลักษณ์ ลิ้มประเสริฐ
+2.นายปฏิภาณ ชงกุล
+3.นายชินวัตร พรหมเทพ
+4.นายธันย์ดาริน เทียมพงษ์
+5.นางสาวพิมพ์ชนก ศิริมงคล
+6.นางสาวจิรารัชนก จันลาศรี
+7.นางสาวทิวาพร ปานพุ่มชื่น
+
+(คณะบริหารธุรกิจ KMITL)
+8.นางสาวสาธกา กุณา',
+'images/index-images/student_project/aFT.png',
 'Project',
 'projects.html'
 );

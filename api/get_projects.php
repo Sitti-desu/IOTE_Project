@@ -1,21 +1,26 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
 include 'db.php';
+header('Content-Type: application/json; charset=utf-8');
 
 try {
-    $sql = "SELECT id, title, description, image, category, link, created_at
-            FROM projects
-            ORDER BY created_at DESC";
-    $stmt = $conn->query($sql);
-    $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (isset($_GET['id']) && $_GET['id'] !== '') {
+        $id = intval($_GET['id']);
 
-    echo json_encode($projects, JSON_UNESCAPED_UNICODE);
-} catch(PDOException $e) {
+        $stmt = $conn->prepare("SELECT * FROM projects WHERE id = ?");
+        $stmt->execute([$id]);
+
+        $project = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        echo json_encode($project ?: [], JSON_UNESCAPED_UNICODE);
+    } else {
+        $stmt = $conn->query("SELECT * FROM projects ORDER BY created_at DESC, id DESC");
+        $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        echo json_encode($projects, JSON_UNESCAPED_UNICODE);
+    }
+} catch (PDOException $e) {
     echo json_encode([
-        "status" => "error",
-        "message" => $e->getMessage()
+        "error" => $e->getMessage()
     ], JSON_UNESCAPED_UNICODE);
 }
-
-$conn = null;
 ?>

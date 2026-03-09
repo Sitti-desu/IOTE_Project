@@ -93,12 +93,14 @@ async function loadNewsPreview() {
             return;
         }
 
-        newsGrid.innerHTML = data.map((item) => {
+        const previewNews = data.slice(0, 3);
+
+        newsGrid.innerHTML = previewNews.map((item) => {
+            const id = item.id || "";
             const image = item.image ? item.image.replace(/\\/g, "/") : "images/aj1.png";
             const title = item.title || "Untitled News";
             const description = item.description || "";
             const category = item.category || "News";
-            const link = item.link || "#";
 
             return `
                 <article class="news-preview-card">
@@ -107,7 +109,7 @@ async function loadNewsPreview() {
                         <span class="news-preview-category">${category}</span>
                         <h3>${title}</h3>
                         <p>${description}</p>
-                        <a href="${link}" class="news-preview-link">Read More →</a>
+                        <a href="news-detail.html?id=${id}" class="news-preview-link">Read More →</a>
                     </div>
                 </article>
             `;
@@ -135,16 +137,20 @@ async function loadProjectsPreview() {
         const previewProjects = data.slice(0, 3);
 
         projectsGrid.innerHTML = previewProjects.map((item) => {
+            const id = item.id || "";
             const image = item.image ? item.image.replace(/\\/g, "/") : "images/aj1.png";
             const title = item.title || "Project";
             const description = item.description || "";
+            const category = item.category || "Project";
 
             return `
                 <div class="projects-lab-card">
                     <img src="${image}" alt="${title}">
                     <div class="projects-lab-content">
+                        <div class="news-preview-category">${category}</div>
                         <h3>${title}</h3>
                         <p>${description}</p>
+                        <a href="project-detail.html?id=${id}" class="projects-lab-readmore">Read More →</a>
                     </div>
                 </div>
             `;
@@ -156,6 +162,35 @@ async function loadProjectsPreview() {
     }
 }
 
-loadFacultyPreview();
-loadNewsPreview();
-loadProjectsPreview();
+function initAboutImageSwitcher() {
+    const boxes = document.querySelectorAll(".about-highlight-box");
+    const mainImage = document.getElementById("aboutMainImage");
+
+    if (!boxes.length || !mainImage) return;
+
+    boxes.forEach((box) => {
+        box.addEventListener("click", () => {
+            const newImage = box.getAttribute("data-image");
+            if (!newImage) return;
+
+            boxes.forEach((item) => item.classList.remove("active"));
+            box.classList.add("active");
+
+            mainImage.style.opacity = "0.35";
+            mainImage.style.transform = "scale(0.98)";
+
+            setTimeout(() => {
+                mainImage.src = newImage;
+                mainImage.style.opacity = "1";
+                mainImage.style.transform = "scale(1)";
+            }, 180);
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadFacultyPreview();
+    loadNewsPreview();
+    loadProjectsPreview();
+    initAboutImageSwitcher();
+});
