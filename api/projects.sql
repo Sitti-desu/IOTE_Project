@@ -12,7 +12,7 @@ INSERT INTO projects (title, description, image, category, link) VALUES
 (
 'IoT Projects',
 'Design and develop connected devices, sensor systems, and smart applications for real-world problem solving.',
-'images/aj1.png',
+'images/doraemon1.png',
 'Project',
 'projects.html'
 ),
