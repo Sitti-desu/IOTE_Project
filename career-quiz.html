@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Story Quiz | IoT Engineering</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index-style.css">
+    <link rel="stylesheet" href="css/career-quiz.css">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main class="career-quiz-page">
+        <section class="career-quiz-hero">
+            <span class="career-quiz-label">Interactive Feature</span>
+            <h1>Career Story Quiz</h1>
+            <p>
+                Answer a short story quiz and discover which IoTE future path fits you best.
+            </p>
+        </section>
+
+        <section class="career-quiz-box">
+            <div id="quizStartScreen" class="quiz-start-screen">
+                <h2>Your Future Starts with One Choice</h2>
+                <p>
+                    In this short story, you will make decisions like a future student and builder.
+                    Your choices will reveal a possible career path, recommended focus, and suitable program.
+                </p>
+                <button id="startQuizBtn" class="career-primary-btn">Start Quiz</button>
+            </div>
+
+            <div id="quizScreen" class="quiz-screen hidden">
+                <div class="quiz-progress-wrap">
+                    <div class="quiz-progress-text">
+                        Question <span id="currentQuestionNumber">1</span> / <span id="totalQuestionNumber">5</span>
+                    </div>
+                    <div class="quiz-progress-bar">
+                        <div id="quizProgressFill" class="quiz-progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-question-card">
+                    <h2 id="quizQuestionTitle"></h2>
+                    <div id="quizOptions" class="quiz-options"></div>
+                </div>
+            </div>
+
+            <div id="quizResultScreen" class="quiz-result-screen hidden">
+                <span class="career-result-label">Your Result</span>
+                <h2 id="resultTitle"></h2>
+                <p id="resultDescription"></p>
+
+                <div class="career-result-grid">
+                    <div class="career-result-card">
+                        <h3>Recommended Focus</h3>
+                        <ul id="resultFocusList"></ul>
+                    </div>
+
+                    <div class="career-result-card">
+                        <h3>Suggested Program</h3>
+                        <ul id="resultProgramList"></ul>
+                    </div>
+                </div>
+
+                <div class="career-result-links">
+                    <a href="aboutiote.html" class="career-secondary-btn">Learn More About IoTE</a>
+                    <a href="academic.html" class="career-secondary-btn">Explore Programs</a>
+                    <a href="admissions.html" target="_blank" class="career-primary-btn">Apply Now</a>
+                </div>
+
+                <div class="career-restart-wrap">
+                    <button id="restartQuizBtn" class="career-outline-btn">Try Again</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/career-quiz.js"></script>
+</body>
+</html>
