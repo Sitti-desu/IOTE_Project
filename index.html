@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IoT Engineering | KMITL</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index-style.css">
     <link rel="stylesheet" href="css/admission-style.css">
     <style>
         /* จัด Layout หลักให้อยู่ตรงกลางและดัน Footer ลงไปล่างสุด */
@@ -42,36 +43,327 @@
     <div id="header-placeholder"></div>
 
     <main>
-        <section style="text-align: center; background-color: white; border-radius: 12px; padding: 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-            <h1 class="hero-title">Welcome to IoT Engineering</h1>
-            <p style="font-size: 1.2rem; color: #7F8C8D; margin-bottom: 30px;">Innovating the future with Internet of Things.</p>
-            
-            <a href="admissions.html" class="btn">Apply Now</a>
-            <a href="about.html" class="btn" style="background-color: #95A5A6; margin-left: 10px;">Learn More</a>
 
-            <div style="margin-top: 40px;">
-                <iframe width="100%" height="400" style="max-width: 800px; border-radius: 12px; border: none; background-color: var(--bg-color);" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-            </div>
-        </section>
+    <section class="index-slider">
 
-        <section class="flex-container">
-            <div class="card" style="width: 48%; text-align: center;">
-                <h3 style="color: var(--primary-color); margin-bottom: 15px;">Academic Excellence</h3>
-                <p style="margin-bottom: 15px;">Explore our modern curriculum designed for the future.</p>
-                <a href="academic.html" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">Read more →</a>
+        <div class="index-slides">
+
+            <div class="index-slide active" style="background-image:url('images/index-images/slide1.jpg')">
+                <div class="index-overlay">
+                    <h1>IoT & Information Engineering</h1>
+                    <p>Build the future with smart technology and innovation.</p>
+
+                    <div class="index-buttons">
+                        <a href="admissions.html" target="_blank" class="apply-btn">Apply Now</a>
+                        <a href="aboutiote.html" class="learn-btn">Learn More</a>
+                    </div>
+                </div>
             </div>
-            
-            <div class="card" style="width: 48%; text-align: center;">
-                <h3 style="color: var(--primary-color); margin-bottom: 15px;">Cyber Lab Performance</h3>
-                <p style="margin-bottom: 15px;">Experience hands-on learning in our advanced facilities.</p>
-                <a href="performance.html" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">Explore Lab →</a>
+
+            <div class="index-slide" style="background-image:url('images/index-images/doraemon2.jpg')">
+                <div class="index-overlay">
+                    <h1>Design Smart Systems</h1>
+                    <p>Learn embedded systems, networking, AI and modern software.</p>
+
+                    <div class="index-buttons">
+                        <a href="academic.html" class="explore-btn">Explore Program</a>
+                    </div>
+                </div>
             </div>
-        </section>
+
+            <div class="index-slide" style="background-image:url('images/index-images/doraemon3.jpg')">
+                <div class="index-overlay">
+                    <h1>Create Real Projects</h1>
+                    <p>Experience hands-on learning in our advanced labs.</p>
+
+                    <div class="index-buttons">
+                        <a href="performance.html" class="lab-btn">View Lab</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <button class="index-prev" onclick="changeIndexSlide(-1)">❮</button>
+        <button class="index-next" onclick="changeIndexSlide(1)">❯</button>
+
+
+        <div class="index-dots">
+            <span class="index-dot active" onclick="goIndexSlide(0)"></span>
+            <span class="index-dot" onclick="goIndexSlide(1)"></span>
+            <span class="index-dot" onclick="goIndexSlide(2)"></span>
+        </div>
+
+    </section>
+
+    <section class="about-iote-section">
+        <div class="about-iote-text">
+            <span class="about-iote-label">About IoTE</span>
+            <h2>Where Smart Technology Meets Real-World Innovation</h2>
+            <p>
+                IoT & Information Engineering combines embedded systems, software development,
+                networking, and data technologies to create intelligent solutions for the future.
+                Students learn through hands-on projects, modern laboratories, and practical experiences
+                that prepare them for careers in smart technology and digital innovation.
+            </p>
+
+            <div class="about-iote-highlights">
+                <div class="about-highlight-box">
+                    <i class="fas fa-microchip"></i>
+                    <span>Embedded Systems</span>
+                </div>
+                <div class="about-highlight-box">
+                    <i class="fas fa-wifi"></i>
+                    <span>IoT & Networking</span>
+                </div>
+                <div class="about-highlight-box">
+                    <i class="fas fa-code"></i>
+                    <span>Software Development</span>
+                </div>
+                <div class="about-highlight-box">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Data & Innovation</span>
+                </div>
+            </div>
+
+            <a href="about.html" class="btn">Learn More</a>
+        </div>
+
+        <div class="about-iote-image">
+            <img src="images/iot.jpg" alt="IoTE Department">
+        </div>
+    </section>
+
+    <section class="why-iote-section">
+        <div class="why-iote-header">
+            <span class="why-iote-label">Why Choose IoTE</span>
+            <h2>Build Skills for the Technology of Tomorrow</h2>
+            <p>
+                Our program is designed to prepare students for the future through practical learning,
+                modern technology, and real-world experience in smart systems and digital innovation.
+            </p>
+        </div>
+
+        <div class="why-iote-grid">
+            <div class="why-iote-card">
+                <div class="why-iote-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Hands-on Learning</h3>
+                <p>
+                    Gain experience through real projects, laboratory work, and practical assignments
+                    that strengthen both technical and problem-solving skills.
+                </p>
+            </div>
+
+            <div class="why-iote-card">
+                <div class="why-iote-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3>Modern Technology</h3>
+                <p>
+                    Learn key technologies including embedded systems, IoT devices, networking,
+                    software development, and smart applications.
+                </p>
+            </div>
+
+            <div class="why-iote-card">
+                <div class="why-iote-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Future Career Paths</h3>
+                <p>
+                    Prepare for careers such as IoT Engineer, Software Developer, System Designer,
+                    Data Specialist, and other technology-driven roles.
+                </p>
+            </div>
+
+            <div class="why-iote-card">
+                <div class="why-iote-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Innovation Mindset</h3>
+                <p>
+                    Develop creativity and critical thinking to design solutions that connect technology
+                    with real-world needs and future opportunities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="program-section">
+
+        <div class="program-header">
+            <span class="program-label">Program Highlights</span>
+            <h2>Explore the Technologies Behind Smart Systems</h2>
+            <p>
+                Our curriculum combines hardware, software, networking and data technologies
+                to build intelligent systems for the connected world.
+            </p>
+        </div>
+
+        <div class="program-grid">
+
+            <div class="program-card">
+                <i class="fas fa-microchip"></i>
+                <h3>Embedded Systems</h3>
+                <p>
+                    Learn how hardware and software work together to control smart devices
+                    and electronic systems.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <i class="fas fa-wifi"></i>
+                <h3>Internet of Things</h3>
+                <p>
+                    Connect devices and sensors to create intelligent networks
+                    and smart environments.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <i class="fas fa-code"></i>
+                <h3>Software Development</h3>
+                <p>
+                    Design and build modern applications for web, mobile,
+                    and connected systems.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <i class="fas fa-database"></i>
+                <h3>Data & AI</h3>
+                <p>
+                    Analyze data and apply intelligent algorithms
+                    to develop smarter technology solutions.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>Networking</h3>
+                <p>
+                    Understand communication systems that allow
+                    devices and platforms to interact seamlessly.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <i class="fas fa-robot"></i>
+                <h3>Smart Systems</h3>
+                <p>
+                    Integrate technologies to build real-world intelligent
+                    systems and automation solutions.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="projects-lab-section">
+        <div class="projects-lab-header">
+            <span class="projects-lab-label">Student Projects & Labs</span>
+            <h2>Learn by Building Real-World Innovation</h2>
+            <p>
+                Students gain practical experience through laboratory work, project-based learning,
+                and technology-driven activities that connect ideas with real applications.
+            </p>
+        </div>
+
+        <div class="projects-lab-grid" id="projectsLabGrid">
+            <div class="projects-lab-loading">Loading projects...</div>
+        </div>
+
+        <div class="projects-lab-action">
+            <a href="projects.html" class="btn">Explore More Projects</a>
+        </div>
+    </section>
+
+    <section class="career-quiz-teaser-section">
+        <div class="career-quiz-teaser-content">
+            <span class="career-quiz-teaser-label">Special Feature</span>
+            <h2>Career Story Quiz</h2>
+            <p>
+                Play a short story quiz and discover which future path in IoTE fits you best.
+                Explore your strengths, recommended focus areas, and possible programs.
+            </p>
+            <a href="career-quiz.html" class="career-quiz-start-btn">Start Quiz</a>
+        </div>
+
+        <div class="career-quiz-teaser-cards">
+            <div class="career-teaser-card">
+                <div class="career-teaser-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3>IoT / Embedded</h3>
+                <p>For hands-on builders and smart system creators.</p>
+            </div>
+
+            <div class="career-teaser-card">
+                <div class="career-teaser-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Software / App</h3>
+                <p>For people who love programming and digital products.</p>
+            </div>
+
+            <div class="career-teaser-card">
+                <div class="career-teaser-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Data / AI</h3>
+                <p>For analysts who enjoy patterns, insights, and intelligent systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faculty-preview-section">
+        <div class="faculty-preview-header">
+            <span class="faculty-preview-label">Faculty Preview</span>
+            <h2>Meet Our Faculty Members</h2>
+            <p>
+                Learn from experienced instructors and researchers who guide students
+                in technology, innovation, and real-world problem solving.
+            </p>
+        </div>
+
+        <div class="faculty-preview-grid" id="facultyPreviewGrid">
+            <div class="faculty-preview-loading">Loading faculty members...</div>
+        </div>
+
+        <div class="faculty-preview-action">
+            <a href="faculty.html" class="btn">View All Faculty</a>
+        </div>
+    </section>
+
+    <section class="news-preview-section">
+        <div class="news-preview-header">
+            <span class="news-preview-label">News & Announcements</span>
+            <h2>Stay Updated with IoTE News</h2>
+            <p>
+                Explore the latest announcements, student activities, and important updates
+                from the department.
+            </p>
+        </div>
+
+        <div class="news-preview-grid" id="newsPreviewGrid">
+            <div class="news-preview-loading">Loading news...</div>
+        </div>
+
+        <div class="news-preview-action">
+            <a href="news.html" class="btn">See More News</a>
+        </div>
+    </section>
+
     </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="js/app.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
 </html>
