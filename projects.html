@@ -7,6 +7,7 @@
     <title>Projects & Labs | IoT Engineering</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index-style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -15,7 +16,7 @@
     <div id="header-placeholder"></div>
 
     <main>
-        <section class="projects-page-section">
+        <section class="projects-page-section" data-aos="fade-up" data-aos-delay="200"> 
             <div class="projects-page-header">
                 <span class="projects-lab-label">Projects & Labs</span>
                 <h1>ผลงานและโครงงานของนักศึกษา</h1>
@@ -77,5 +78,14 @@
 
     <script src="js/app.js"></script>
     <script src="js/projects.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+
 </body>
 </html>

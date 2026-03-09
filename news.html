@@ -7,6 +7,7 @@
     <title>News | IoT Engineering</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index-style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -15,7 +16,7 @@
     <div id="header-placeholder"></div>
 
     <main>
-        <section class="news-page-section">
+        <section class="news-page-section" data-aos="fade-up" data-aos-delay="200">
             <div class="news-page-header">
                 <span class="news-preview-label">News & Announcements</span>
                 <h1>ข่าวสารและประกาศจาก IoTE</h1>
@@ -76,5 +77,14 @@
 
     <script src="js/app.js"></script>
     <script src="js/news.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+
 </body>
 </html>

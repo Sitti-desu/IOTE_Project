@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index-style.css">
     <link rel="stylesheet" href="css/admission-style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         /* จัด Layout หลักให้อยู่ตรงกลางและดัน Footer ลงไปล่างสุด */
         body {
@@ -34,7 +35,6 @@
             .flex-container { flex-direction: column; }
             .flex-container > div { width: 100% !important; }
             .mobile-menu-btn { display: block !important; }
-            #nav-menu { display: none; }
         }
     </style>
 </head>
@@ -99,7 +99,7 @@
 
     </section>
 
-    <section class="about-iote-section">
+    <section class="about-iote-section" data-aos="fade-up" data-aos-delay="200">
         <div class="about-iote-text">
             <span class="about-iote-label">About IoTE</span>
             <h2>ที่ที่เทคโนโลยีอัจฉริยะมาพบกับนวัตกรรมในโลกจริง</h2>
@@ -137,7 +137,7 @@
         </div>
     </section>
 
-    <section class="why-iote-section">
+    <section class="why-iote-section" data-aos="fade-up" data-aos-delay="200">
         <div class="why-iote-header">
             <span class="why-iote-label">Why Choose IoTE</span>
             <h2>สร้างทักษะสำหรับเทคโนโลยีแห่งอนาคต</h2>
@@ -189,7 +189,7 @@
         </div>
     </section>
 
-    <section class="program-section">
+    <section class="program-section" data-aos="fade-up" data-aos-delay="200">
 
         <div class="program-header">
             <span class="program-label">Program Highlights</span>
@@ -253,7 +253,7 @@
 
     </section>
 
-        <section class="news-preview-section">
+        <section class="news-preview-section" data-aos="fade-up" data-aos-delay="200">
         <div class="news-preview-header">
             <span class="news-preview-label">News & Announcements</span>
             <h2>ติดตามข่าวสารล่าสุดจาก IoTE</h2>
@@ -271,7 +271,7 @@
         </div>
     </section>
 
-    <section class="projects-lab-section">
+    <section class="projects-lab-section" data-aos="fade-up" data-aos-delay="200">
         <div class="projects-lab-header">
             <span class="projects-lab-label">Student Projects & Labs</span>
             <h2>เรียนรู้ผ่านการสร้างนวัตกรรมจากสถานการณ์จริง</h2>
@@ -289,10 +289,12 @@
         </div>
     </section>
 
-    <section class="career-quiz-teaser-section">
+    <section class="career-quiz-teaser-section" data-aos="fade-up" data-aos-delay="200">
         <div class="career-quiz-teaser-content">
             <span class="career-quiz-teaser-label">Special Feature</span>
-            <h2>Career Story Quiz</h2>
+            <h2>พร้อมค้นหาเส้นทางของตัวเองหรือยัง?</h2>
+            <h2>มาลองเล่นดูสิ!</h2>
+
             <p>
                 เล่นแบบทดสอบเรื่องราวสั้น ๆ เพื่อค้นหาว่าเส้นทางใน IoTE แบบใดที่เหมาะกับคุณมากที่สุด พร้อมสำรวจจุดแข็งของตนเอง แนวทางการเรียนที่แนะนำ และสายงานที่อาจเหมาะสมในอนาคต
             </p>
@@ -326,7 +328,7 @@
         </div>
     </section>
 
-    <section class="faculty-preview-section">
+    <section class="faculty-preview-section" data-aos="fade-up" data-aos-delay="200">
         <div class="faculty-preview-header">
             <span class="faculty-preview-label">Faculty Preview</span>
             <h2>พบกับคณาจารย์ของเรา</h2>
@@ -350,6 +352,15 @@
 
     <script src="js/app.js"></script>
     <script src="js/index.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>    
 
     
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
