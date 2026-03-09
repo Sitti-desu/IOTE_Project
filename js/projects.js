@@ -4,7 +4,10 @@ async function loadAllProjects() {
 
     try {
         const response = await fetch("api/get_projects.php");
-        const data = await response.json();
+        const text = await response.text();
+        console.log("projects api raw:", text);
+
+        const data = JSON.parse(text);
 
         if (!Array.isArray(data) || data.length === 0) {
             projectsGrid.innerHTML = `<div class="projects-lab-empty">No projects available.</div>`;
@@ -12,6 +15,7 @@ async function loadAllProjects() {
         }
 
         projectsGrid.innerHTML = data.map((item) => {
+            const id = item.id || "";
             const image = item.image ? item.image.replace(/\\/g, "/") : "images/aj1.png";
             const title = item.title || "Project";
             const description = item.description || "";
@@ -24,17 +28,16 @@ async function loadAllProjects() {
                         <div class="news-preview-category">${category}</div>
                         <h3>${title}</h3>
                         <p>${description}</p>
+                        <a href="project-detail.html?id=${id}" class="projects-lab-readmore">Read More →</a>
                     </div>
                 </div>
             `;
         }).join("");
 
     } catch (error) {
-        projectsGrid.innerHTML = `<div class="projects-lab-empty">Unable to load projects.</div>`;
         console.error("All projects error:", error);
+        projectsGrid.innerHTML = `<div class="projects-lab-empty">Unable to load projects.</div>`;
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    loadAllProjects();
-});
+document.addEventListener("DOMContentLoaded", loadAllProjects);

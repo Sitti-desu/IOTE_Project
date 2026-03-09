@@ -3,7 +3,7 @@ async function loadAllNews() {
     if (!newsGrid) return;
 
     try {
-        const response = await fetch("api/get_all_news.php");
+        const response = await fetch("api/get_news.php");
         const data = await response.json();
 
         if (!Array.isArray(data) || data.length === 0) {
@@ -12,11 +12,11 @@ async function loadAllNews() {
         }
 
         newsGrid.innerHTML = data.map((item) => {
+            const id = item.id || "";
             const image = item.image ? item.image.replace(/\\/g, "/") : "images/aj1.png";
             const title = item.title || "Untitled News";
             const description = item.description || "";
             const category = item.category || "News";
-            const link = item.link || "#";
 
             return `
                 <article class="news-preview-card">
@@ -25,7 +25,7 @@ async function loadAllNews() {
                         <span class="news-preview-category">${category}</span>
                         <h3>${title}</h3>
                         <p>${description}</p>
-                        <a href="${link}" class="news-preview-link">Read More →</a>
+                        <a href="news-detail.html?id=${id}" class="news-preview-link">Read More →</a>
                     </div>
                 </article>
             `;
@@ -37,6 +37,4 @@ async function loadAllNews() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    loadAllNews();
-});
+document.addEventListener("DOMContentLoaded", loadAllNews);
