@@ -12,7 +12,6 @@ async function loadComponents() {
         
         // ✨ เพิ่มคำสั่งนี้: เรียกฟังก์ชันเซนเซอร์ตรวจจับตอนโหลดเว็บเสร็จ ✨
         initFloatingMenuObserver();
-        
     } catch (error) {
         console.error("Error loading components:", error);
     }
