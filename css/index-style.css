@@ -1361,3 +1361,53 @@
         height:200px;
     }
 }
+
+.career-quiz-teaser-section.pop-after-fade {
+    animation: popAfterFade 0.45s ease-out;
+}
+
+@keyframes popAfterFade {
+    0% {
+        transform: scale(1);
+    }
+    45% {
+        transform: scale(1.035);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.recommended-section{
+    position: relative;
+    overflow: visible;
+}
+
+.recommended-ribbon{
+    position: absolute;
+    top: 20px;
+    left: -12px;
+
+    background: linear-gradient(135deg, #ff7a2f, #ff4e00);
+    color: white;
+
+    font-size: 20px;      /* เดิมประมาณ 16 */
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    padding: 12px 28px;   /* เพิ่ม padding ให้ใหญ่ขึ้น */
+
+    border-radius: 0 18px 18px 0;
+
+    box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+}
+
+.recommended-ribbon::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+
+    border-top: 12px solid #c94a12;
+    border-left: 12px solid transparent;
+}
