@@ -642,6 +642,24 @@
     background:#e9ecef;
 }
 
+@media (max-width:768px){
+
+.faculty-preview-grid{
+    grid-template-columns:1fr;
+    justify-items:center;   /* จัด card ให้อยู่กลาง */
+}
+
+.faculty-preview-card{
+    width:220px;            /* ความกว้างเท่ารูป */
+    padding:15px;
+}
+
+.faculty-preview-image{
+    width:100%;
+    height:auto;
+}
+}
+
 .faculty-preview-content{
     padding:22px 20px 24px;
 }

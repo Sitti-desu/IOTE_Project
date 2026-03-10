@@ -37,7 +37,7 @@ if (indexSlides.length) {
 
     setInterval(() => {
         showIndexSlide(indexSlide + 1);
-    }, 5000);
+    }, 10000);
 }
 
 async function loadFacultyPreview() {
