@@ -262,7 +262,7 @@ INSERT INTO `courses` (`id`, `curriculum_id`, `course_code`, `course_name_th`, `
 --
 -- Indexes for table `courses`
 --
-ALTER TABLE `courses`
+/*ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`),
   ADD KEY `curriculum_id` (`curriculum_id`);
 
