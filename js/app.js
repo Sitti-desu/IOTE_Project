@@ -209,65 +209,45 @@ function closeFilterModal() {
     document.getElementById('filterModal').style.display = 'none';
 }
 
+// ระบบ Filter คณาจารย์
+function openFilterModal() { document.getElementById('filterModal').style.display = 'flex'; }
+function closeFilterModal() { document.getElementById('filterModal').style.display = 'none'; }
+
 function applyFilter() {
     const checkboxes = document.querySelectorAll('.exp-cb:checked');
     const selectedExpGroups = Array.from(checkboxes).map(cb => cb.value); 
     const cards = document.querySelectorAll('.faculty-card');
 
-    // 1. ซ่อน/โชว์การ์ดอาจารย์แต่ละคน
     cards.forEach(card => {
-        if (selectedExpGroups.length === 0) {
-            card.style.display = 'flex';
-            return;
-        }
-
+        if (selectedExpGroups.length === 0) { card.style.display = 'flex'; return; }
         const cardExp = card.getAttribute('data-expertise');
-        if (!cardExp) {
-            card.style.display = 'none'; 
-            return;
-        }
-
+        if (!cardExp) { card.style.display = 'none'; return; }
         const cardExpLower = cardExp.toLowerCase();
         const hasMatch = selectedExpGroups.some(group => {
-            const keywords = group.split(','); 
-            return keywords.some(kw => cardExpLower.includes(kw.toLowerCase().trim()));
+            return group.split(',').some(kw => cardExpLower.includes(kw.toLowerCase().trim()));
         });
-
-        if (hasMatch) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
+        card.style.display = hasMatch ? 'flex' : 'none';
     });
 
-    // 2. ✨ เพิ่มโค้ดส่วนนี้: ตรวจสอบและซ่อนกล่อง Section ที่ว่างเปล่า ✨
-    const iotContainer = document.getElementById('iot-faculty-container');
-    const phyContainer = document.getElementById('physics-faculty-container');
-
-    // ฟังก์ชันช่วยเช็คความว่างเปล่า
     const toggleEmptySection = (container) => {
-        if (!container) return; // ป้องกัน Error ถ้าหาล่องไม่เจอ
-        
-        // นับจำนวนการ์ดอาจารย์ที่ยัง "โชว์อยู่" ในกล่องนี้
-        const visibleCards = Array.from(container.querySelectorAll('.faculty-card')).filter(card => card.style.display !== 'none');
-        
-        // หากล่อง <section class="outline-border"> ที่ครอบ container นี้อยู่
+        if (!container) return;
+        const visibleCards = Array.from(container.querySelectorAll('.faculty-card')).filter(c => c.style.display !== 'none');
         const parentSection = container.closest('.outline-border');
-        
-        if (parentSection) {
-            if (visibleCards.length === 0) {
-                parentSection.style.display = 'none'; // ซ่อนทั้งกรอบขาวถ้าไม่มีอาจารย์เลย
-            } else {
-                parentSection.style.display = 'block'; // โชว์กรอบขาวกลับมาถ้ามีอาจารย์
-            }
-        }
+        if (parentSection) parentSection.style.display = visibleCards.length === 0 ? 'none' : 'block';
     };
-
-    // สั่งเช็คทั้ง 2 ภาควิชา
-    toggleEmptySection(iotContainer);
-    toggleEmptySection(phyContainer);
-
+    
+    toggleEmptySection(document.getElementById('iot-faculty-container'));
+    toggleEmptySection(document.getElementById('physics-faculty-container'));
+    
     closeFilterModal();
+
+    // ✨ หัวใจสำคัญที่แก้ปัญหาล่องหน ✨
+    // ตะโกนบอก AOS ให้สแกนหน้าเว็บและวาดแอนิเมชันใหม่ หลังจากที่ตารางหดตัวลงแล้ว
+    setTimeout(() => { 
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh(); 
+        }
+    }, 100);
 }
 // ==========================================
 // ระบบ Popup ประวัติ และ ส่งข้อความหาอาจารย์
