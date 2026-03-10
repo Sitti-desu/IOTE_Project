@@ -1,3 +1,5 @@
+SET NAMES utf8mb4;
+
 CREATE TABLE projects (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -6,7 +8,9 @@ CREATE TABLE projects (
     category VARCHAR(100) DEFAULT 'Project',
     link VARCHAR(255) DEFAULT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO projects (title, description, image, category, link) VALUES
 (
@@ -133,3 +137,9 @@ AI Agent ช่วยวิเคราะห์และจัดทำรา�
 'Project',
 'projects.html'
 );
+
+/*
+ALTER TABLE projects 
+CONVERT TO CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;
+*/

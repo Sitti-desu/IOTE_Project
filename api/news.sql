@@ -1,4 +1,6 @@
 -- สร้างตารางข่าว
+SET NAMES utf8mb4;
+
 CREATE TABLE news (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -7,7 +9,9 @@ CREATE TABLE news (
     category VARCHAR(100),
     link VARCHAR(255),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci;
 
 -- เพิ่มข่าวตัวอย่าง
 INSERT INTO news (title, description, image, category, link) VALUES
@@ -92,3 +96,9 @@ See you soon, Scooby-Dooby-Doo!',
 'Events',
 'performance.html'
 );
+
+/*
+ALTER TABLE news 
+CONVERT TO CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;
+*/
