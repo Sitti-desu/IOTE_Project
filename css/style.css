@@ -343,108 +343,219 @@ body {
     backdrop-filter: blur(10px); /* เอฟเฟกต์เบลอพื้นหลัง */
 }
 /* =========================================
-   Floating Navigation (iPhone Style)
+   Floating Navigation - refined for IoTE
 ========================================= */
 .ios-float-menu {
     position: fixed;
-    top: 30px;    /* ✨ ย้ายจาก bottom เป็น top ✨ */
-    right: 30px;
+    top: 22px;
+    right: 22px;
     z-index: 9999;
     display: flex;
-    flex-direction: column-reverse; /* ✨ สลับให้ปุ่มเกียร์อยู่บน กล่องเมนูห้อยอยู่ล่าง ✨ */
+    flex-direction: column-reverse;
     align-items: flex-end;
-    
-    /* ✨ ซ่อนตัวไว้ก่อน (รอให้ JS สั่งโชว์) ✨ */
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-20px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(-12px);
+    transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
 }
 
-/* คลาสที่จะถูก JS สั่งเพิ่มตอนไม่เห็น Header/Footer */
 .ios-float-menu.show-btn {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-/* กล่องเมนูที่เด้งออกมา */
 .ios-menu-items {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(15px); 
-    -webkit-backdrop-filter: blur(15px);
-    border-radius: 20px;
+    width: 220px;
+    margin-top: 12px;
     padding: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    margin-top: 15px; /* ✨ เปลี่ยนเป็นเว้นระยะด้านบน ✨ */
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(230, 126, 34, 0.12);
+    box-shadow: 0 12px 28px rgba(44, 62, 80, 0.14);
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    min-width: 200px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    
-    /* ซ่อนไว้ก่อน พร้อมแอนิเมชันห้อยลงมา */
+    gap: 4px;
+
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-20px) scale(0.9); /* ✨ เด้งลงล่าง ✨ */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-origin: top right; /* ✨ จุดหมุนเปลี่ยนเป็นมุมขวาบน ✨ */
+    transform: translateY(-10px) scale(0.96);
+    transform-origin: top right;
+    transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s ease;
 }
 
-/* คลาสที่จะถูกเพิ่มตอนกดปุ่มเกียร์ */
 .ios-menu-items.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0) scale(1);
 }
 
-.ios-menu-items a, .scroll-top-btn {
+.ios-menu-header {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    padding: 6px 10px 8px;
+    letter-spacing: 0.3px;
+}
+
+.ios-menu-divider {
+    height: 1px;
+    background: rgba(44, 62, 80, 0.10);
+    margin: 6px 6px 4px;
+}
+
+.ios-menu-items a,
+.scroll-top-btn {
     text-decoration: none;
-    color: #333;
-    padding: 12px 18px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
+    color: var(--secondary-color);
+    background: transparent;
+    border: none;
+    border-radius: 14px;
+    padding: 12px 14px;
     display: flex;
     align-items: center;
     gap: 12px;
-    transition: background 0.2s;
-    border: none;
-    background: transparent;
-    cursor: pointer;
     width: 100%;
-    text-align: left;
+    cursor: pointer;
     font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.ios-menu-items a:hover, .scroll-top-btn:hover {
-    background: rgba(230, 126, 34, 0.15);
-    color: #E67E22;
+.ios-menu-items a i,
+.scroll-top-btn i {
+    width: 18px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #4b4b4b;
+    flex-shrink: 0;
 }
 
-.scroll-top-btn { color: #E67E22; }
+.ios-menu-items a:hover,
+.scroll-top-btn:hover {
+    background: rgba(230, 126, 34, 0.10);
+    color: var(--primary-color);
+    transform: translateX(2px);
+}
 
-/* ปุ่มเกียร์ สไตล์แอป Settings iPhone */
+.ios-menu-items a:hover i,
+.scroll-top-btn:hover i {
+    color: var(--primary-color);
+}
+
+.scroll-top-btn {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.scroll-top-btn i {
+    color: var(--primary-color);
+}
+
 .ios-gear-btn {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
-    border-radius: 16px; 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15), inset 0 2px 3px rgba(255,255,255,0.8);
-    border: 1px solid #b0b8c6;
+    width: 56px;
+    height: 56px;
+    border: 1px solid rgba(44, 62, 80, 0.12);
+    border-radius: 14px;
+    background: #ffffff;
+    color: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 28px;
-    color: #444;
     cursor: pointer;
-    transition: all 0.5s ease;
+    box-shadow: 0 10px 22px rgba(44, 62, 80, 0.12);
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.ios-gear-btn i {
+    font-size: 1.3rem;
+}
+
+.ios-gear-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(44, 62, 80, 0.18);
 }
 
 .ios-gear-btn.spin {
-    transform: rotate(180deg);
-    background: linear-gradient(135deg, #E67E22 0%, #d35400 100%);
-    color: white;
-    border-color: #d35400;
-    box-shadow: 0 8px 20px rgba(230,126,34,0.4);
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 12px 24px rgba(230, 126, 34, 0.32);
+
+    animation: gearSpin 0.6s ease;
+}
+
+@keyframes gearSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .ios-gear-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+    }
+
+    .ios-gear-btn i {
+        font-size: 1.15rem;
+    }
+}
+
+.info-title{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 14px 0;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.info-title::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 70px;
+    height: 3px;
+    background: #f36f21;
+    border-radius: 999px;
+}
+
+/* กัน style เดิมที่ทำเส้นไปอยู่ข้างหัวข้อ */
+.info-glass h3::before,
+.info-glass h3::after{
+    content: none !important;
+}
+
+.left-title{
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.left-title{
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.left-title::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 70px;
+    height: 3px;
+    background: #f36f21;
+    border-radius: 999px;
 }

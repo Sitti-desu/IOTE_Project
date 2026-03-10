@@ -368,10 +368,16 @@ async function submitMessage(event) {
 function toggleIosMenu() {
     const menu = document.getElementById('ios-nav-popup');
     const gear = document.getElementById('ios-gear-toggle');
-    
-    // สลับคลาสเพื่อแสดง/ซ่อน และหมุนเกียร์
+
+    if (!menu || !gear) return;
+
     menu.classList.toggle('show');
     gear.classList.toggle('spin');
+
+    // ลบ class spin หลัง animation จบ
+    setTimeout(() => {
+        gear.classList.remove('spin');
+    }, 700);
 }
 
 // ฟังก์ชันเลื่อนหน้าจอขึ้นบนสุดแบบนุ่มนวล (Smooth Scroll)
@@ -405,38 +411,50 @@ function initFloatingMenuObserver() {
     const floatMenu = document.querySelector('.ios-float-menu');
     const headerObj = document.getElementById('header-placeholder');
     const footerObj = document.getElementById('footer-placeholder');
-    
+
     if (!floatMenu || !headerObj || !footerObj) return;
 
-    // ตรวจสอบตอนโหลดหน้าเว็บครั้งแรก
     checkVisibility();
-
-    // ตรวจสอบตลอดเวลาที่เราไถหน้าจอ (Scroll)
     window.addEventListener('scroll', checkVisibility);
 
     function checkVisibility() {
-        // หาพิกัดของ Header และ Footer ว่าอยู่ตรงไหนของจอ
         const headerRect = headerObj.getBoundingClientRect();
         const footerRect = footerObj.getBoundingClientRect();
-        
-        // เช็คว่ามันโผล่เข้ามาในพื้นที่หน้าจอ (Viewport) หรือไม่
+
         const headerInView = (headerRect.bottom > 0 && headerRect.top < window.innerHeight);
         const footerInView = (footerRect.bottom > 0 && footerRect.top < window.innerHeight);
-        
-        if (headerInView || footerInView) {
-            // ✨ ถ้าเห็น Header หรือ Footer -> สั่งซ่อนปุ่มเกียร์ ✨
-            floatMenu.classList.remove('show-btn'); 
-            
-            // ถ้าเมนูกำลังกางอยู่ ให้พับเก็บให้เรียบร้อยด้วย
+
+        const scrolledEnough = window.scrollY > 280;
+
+        if (!scrolledEnough || headerInView || footerInView) {
+            floatMenu.classList.remove('show-btn');
+
             const menuPopup = document.getElementById('ios-nav-popup');
             const gearBtn = document.getElementById('ios-gear-toggle');
-            if (menuPopup && menuPopup.classList.contains('show')) {
+
+            if (menuPopup && gearBtn) {
                 menuPopup.classList.remove('show');
                 gearBtn.classList.remove('spin');
             }
         } else {
-            // ✨ ถ้าไม่เห็นทั้งคู่ (อยู่กลางเว็บ) -> สั่งโชว์ปุ่มเกียร์ ✨
-            floatMenu.classList.add('show-btn'); 
+            floatMenu.classList.add('show-btn');
         }
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const menuLinks = document.querySelectorAll('.ios-menu-items a');
+
+        menuLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage) {
+                link.style.background = 'rgba(230, 126, 34, 0.12)';
+                link.style.color = 'var(--primary-color)';
+                const icon = link.querySelector('i');
+                if (icon) icon.style.color = 'var(--primary-color)';
+            }
+        });
+    }, 100);
+});

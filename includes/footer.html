@@ -2,22 +2,24 @@
 
      <div class="ios-float-menu">
         <div id="ios-nav-popup" class="ios-menu-items">
-            <a href="index.html"><i class="fas fa-home"></i> หน้าแรก</a>
-            <a href="about.html"><i class="fas fa-info-circle"></i> เกี่ยวกับภาควิชา</a>
-            <a href="faculty.html"><i class="fas fa-users"></i> คณาจารย์</a>
-            <a href="admissions.html"><i class="fas fa-user-graduate"></i> การรับเข้าศึกษา</a>
-            <a href="contact.html"><i class="fas fa-address-book"></i> ติดต่อเรา</a>
-            
-            <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); margin: 5px 0;">
-            
+            <div class="ios-menu-header">Quick Menu</div>
+
+            <a href="index.html"><i class="fas fa-home"></i><span>หน้าแรก</span></a>
+            <a href="about.html"><i class="fas fa-info-circle"></i><span>เกี่ยวกับภาควิชา</span></a>
+            <a href="faculty.html"><i class="fas fa-users"></i><span>คณาจารย์</span></a>
+            <a href="admissions.html"><i class="fas fa-user-graduate"></i><span>การรับเข้าศึกษา</span></a>
+            <a href="contact.html"><i class="fas fa-address-book"></i><span>ติดต่อเรา</span></a>
+
+            <div class="ios-menu-divider"></div>
+
             <button onclick="scrollToTop()" class="scroll-top-btn">
-                <i class="fas fa-arrow-up"></i> เลื่อนขึ้นบนสุด
+                <i class="fas fa-arrow-up"></i><span>เลื่อนขึ้นบนสุด</span>
             </button>
         </div>
-        
-        <div id="ios-gear-toggle" class="ios-gear-btn" onclick="toggleIosMenu()">
+
+        <button id="ios-gear-toggle" class="ios-gear-btn" onclick="toggleIosMenu()" aria-label="Open quick menu">
             <i class="fas fa-cog"></i>
-        </div>
+        </button>
     </div>
 
     <div class="footer-main">
