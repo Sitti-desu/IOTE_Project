@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Checker | IoT Engineering | KMITL</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index-style.css">
+    <link rel="stylesheet" href="css/admission-style.css">
+    <link rel="stylesheet" href="css/credit-checker.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="images/Logo - Copy.png" type="image/png">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .mobile-menu-btn {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="credit-panel-section" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="credit-panel-header">
+                <span class="credit-label">Credit Checker</span>
+                <h1 class="hero-title">ระบบคำนวณหน่วยกิตการเรียน</h1>
+                <p class="credit-subtitle">
+                    เลือกหลักสูตร แล้วลากรายวิชาจากฝั่งซ้ายไปฝั่งขวา เพื่อระบุว่าวิชาไหนเรียนผ่านแล้ว
+                    ระบบจะรวมหน่วยกิตให้อัตโนมัติ
+                </p>
+            </div>
+
+            <div class="credit-top-controls">
+                <div class="credit-control-box">
+                    <label for="curriculumSelect">เลือกหลักสูตร</label>
+                    <select id="curriculumSelect">
+                        <option value="">-- กรุณาเลือกหลักสูตร --</option>
+                    </select>
+                </div>
+
+                <div class="credit-control-box">
+                    <label for="searchCourse">ค้นหารายวิชา</label>
+                    <input type="text" id="searchCourse" placeholder="พิมพ์รหัสวิชา หรือชื่อวิชา">
+                </div>
+            </div>
+
+            <div class="credit-summary-grid">
+                <div class="credit-summary-card">
+                    <span>หน่วยกิตทั้งหมด</span>
+                    <h3 id="totalCredits">0</h3>
+                </div>
+
+                <div class="credit-summary-card">
+                    <span>หน่วยกิตที่เรียนผ่านแล้ว</span>
+                    <h3 id="earnedCredits">0</h3>
+                </div>
+
+                <div class="credit-summary-card">
+                    <span>หน่วยกิตที่ยังขาด</span>
+                    <h3 id="remainingCredits">0</h3>
+                </div>
+
+                <div class="credit-summary-card status-card">
+                    <span>สถานะ</span>
+                    <h3 id="creditStatus">ยังไม่ครบ</h3>
+                </div>
+            </div>
+
+            <div class="credit-progress-wrap">
+                <div class="credit-progress-bar">
+                    <div class="credit-progress-fill" id="creditProgressFill"></div>
+                </div>
+                <p class="credit-progress-text" id="creditProgressText">0%</p>
+            </div>
+
+            <div class="credit-bulk-actions">
+                <button type="button" class="bulk-btn bulk-btn-primary" id="moveAllToSelectedBtn">
+                    ย้ายทั้งหมดไปฝั่งเรียนแล้ว
+                </button>
+                <button type="button" class="bulk-btn" id="moveAllToAvailableBtn">
+                    ย้ายกลับทั้งหมด
+                </button>
+            </div>
+
+            <div class="drag-layout">
+                <div class="drag-column">
+                    <div class="drag-column-header">
+                        <h3>รายวิชาทั้งหมด</h3>
+                        <span id="allCoursesCount">0 วิชา</span>
+                    </div>
+                    <div class="drop-zone" id="allCoursesZone">
+                        <div class="drop-zone-empty">กรุณาเลือกหลักสูตรก่อน</div>
+                    </div>
+                </div>
+
+                <div class="drag-column">
+                    <div class="drag-column-header">
+                        <h3>วิชาที่เรียนไปแล้ว</h3>
+                        <span id="selectedCoursesCount">0 วิชา</span>
+                    </div>
+                    <div class="drop-zone selected-zone" id="selectedCoursesZone">
+                        <div class="drop-zone-empty">ลากวิชามาวางที่นี่</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <div id="celebrationPopup" class="celebration-popup">
+            <div class="celebration-box">
+                <div class="celebration-emoji">🎉</div>
+                <h3>ครบแล้ว!</h3>
+                <p>ตอนนี้หน่วยกิตของคุณครบตามหลักสูตรแล้ว</p>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/credit-checker.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#E67E22" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.4, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#E67E22",
+                    "opacity": 0.3,
+                    "width": 1.5
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "window",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 180, "line_linked": { "opacity": 0.8 } },
+                    "push": { "particles_nb": 3 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

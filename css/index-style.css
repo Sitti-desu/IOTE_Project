@@ -1590,3 +1590,694 @@
         border-left: 6px solid transparent;
     }
 }
+
+.credit-checker-section{
+    margin:70px 0;
+    padding:60px 40px;
+    background:linear-gradient(135deg, #FFFCF9 0%, #F9F4EE 100%);
+    border-radius:20px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.05);
+    overflow:hidden;
+}
+
+.credit-checker-header{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    max-width:800px;
+    margin:0 auto 45px;
+}
+
+.credit-checker-label{
+    display:inline-block;
+    font-size:0.95rem;
+    font-weight:700;
+    color:var(--primary-color);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:12px;
+}
+
+.credit-checker-header h2{
+    font-size:2.2rem;
+    color:var(--secondary-color);
+    margin-bottom:16px;
+    line-height:1.3;
+}
+
+.credit-checker-header p{
+    font-size:1.05rem;
+    color:#666;
+    line-height:1.8;
+}
+
+.credit-checker-card{
+    position:relative;
+    z-index:1;
+    background:#ffffff;
+    border-radius:20px;
+    padding:36px;
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:32px;
+    align-items:center;
+    box-shadow:0 8px 24px rgba(0,0,0,0.05);
+    border:1px solid rgba(243,111,33,0.06);
+}
+
+.credit-checker-info{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.credit-feature-card{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    padding:18px 18px;
+    background:#ffffff;
+    border:1px solid rgba(243,111,33,0.10);
+    border-radius:18px;
+    transition:all 0.25s ease;
+}
+
+.credit-feature-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 24px rgba(0,0,0,0.06);
+}
+
+.credit-feature-icon{
+    width:52px;
+    height:52px;
+    border-radius:16px;
+    background:linear-gradient(135deg, #f36f21, #f5a14c);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.2rem;
+    flex-shrink:0;
+    box-shadow:0 10px 20px rgba(243,111,33,0.18);
+}
+
+.credit-feature-card h3{
+    margin: 0 0 6px;
+    color: #22334d;
+    font-size: 1.28rem;
+}
+
+.credit-feature-card p{
+    margin: 0;
+    color: #657081;
+    line-height: 1.7;
+}
+
+.credit-checker-btn{
+    margin-top:8px;
+    width:fit-content;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:#f36f21;
+    color:#fff;
+    padding:14px 28px;
+    border-radius:40px;
+    text-decoration:none;
+    font-weight:700;
+    transition:all 0.3s ease;
+    box-shadow:0 8px 18px rgba(243,111,33,0.25);
+}
+
+.credit-checker-btn:hover{
+    background:#d95f18;
+    transform:translateY(-3px);
+    box-shadow:0 12px 22px rgba(243,111,33,0.35);
+}
+
+.credit-checker-visual{
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.credit-visual-window{
+    width:100%;
+    max-width:540px;
+    background:#fffaf5;
+    border:1px solid rgba(243,111,33,0.10);
+    border-radius:24px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.05);
+    overflow:hidden;
+    position:relative;
+}
+
+.credit-window-top{
+    display:flex;
+    gap:8px;
+    padding:14px 18px;
+    background:#f8efe6;
+    border-bottom:1px solid rgba(243,111,33,0.08);
+}
+
+.credit-window-top span{
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:#e8b07a;
+}
+
+.credit-window-body{
+    display: grid;
+    grid-template-columns: 145px 1fr;
+    gap: 18px;
+    padding: 22px;
+}
+
+.credit-window-left{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.credit-mini-card{
+    background: #fff;
+    border: 1px solid #f1e5d6;
+    border-radius: 18px;
+    padding: 16px 14px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+}
+
+.credit-mini-card small{
+    display: block;
+    color: #7c8696;
+    margin-bottom: 8px;
+}
+
+.credit-mini-card strong{
+    font-size: 1.8rem;
+    color: #24364f;
+}
+
+.credit-mini-card.active{
+    background: linear-gradient(135deg, #e67e22, #f3a14e);
+    border-color: transparent;
+}
+
+.credit-mini-card.active small,
+.credit-mini-card.active strong{
+    color: #fff;
+}
+
+.credit-window-right{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.credit-bar-group span{
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #5c6676;
+    font-weight: 600;
+}
+
+.credit-bar{
+    width: 100%;
+    height: 14px;
+    background: #f1f2f4;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.credit-bar-fill{
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg, #e67e22, #f6b064);
+    border-radius: 999px;
+}
+
+.credit-course-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.credit-course-row{
+    display: grid;
+    grid-template-columns: 22px 1fr 30px;
+    gap: 10px;
+    align-items: center;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid #f0ece6;
+    border-radius: 14px;
+    color: #4f5868;
+    font-size: 0.96rem;
+}
+
+.credit-course-row i{
+    color: #b3b8c2;
+}
+
+.credit-course-row.checked{
+    background: #fff7ef;
+    border-color: rgba(230,126,34,0.18);
+}
+
+.credit-course-row.checked i{
+    color: #e67e22;
+}
+
+.credit-course-row b{
+    color: #24364f;
+    text-align: right;
+}
+
+.credit-floating-badge{
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    border:1px solid rgba(243,111,33,0.12);
+    border-radius:999px;
+    padding:12px 16px;
+    box-shadow:0 14px 28px rgba(0,0,0,0.07);
+    color:#22334d;
+    font-weight:600;
+    z-index:2;
+}
+
+.credit-floating-badge i{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:linear-gradient(135deg, #e67e22, #f2a456);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+@media (max-width: 768px){
+    .credit-floating-badge{
+        position:static;
+        margin:18px auto 0;
+        width:fit-content;
+        max-width:100%;
+    }
+}
+
+@media (max-width: 1100px){
+    .credit-checker-card{
+        grid-template-columns: 1fr;
+    }
+
+    .credit-checker-visual{
+        min-height: auto;
+    }
+
+    .credit-floating-badge{
+        position: static;
+        margin-top: 18px;
+        width: fit-content;
+    }
+}
+
+@media (max-width: 768px){
+    .credit-checker-section{
+        padding:40px 20px;
+    }
+
+    .credit-checker-header h2{
+        font-size:1.8rem;
+    }
+
+    .credit-checker-card{
+        grid-template-columns:1fr;
+        padding:22px;
+        border-radius:20px;
+    }
+
+    .credit-window-body{
+        grid-template-columns:1fr;
+    }
+
+    .credit-window-left{
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+
+    .credit-mini-card{
+        flex:1 1 120px;
+    }
+
+    .credit-checker-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    .credit-feature-card{
+        padding:16px;
+    }
+
+    .credit-feature-card h3{
+        font-size:1.08rem;
+    }
+
+    .credit-floating-badge{
+        position:static;
+        margin-top:18px;
+        width:fit-content;
+    }
+}
+
+@media (max-width: 520px){
+    .credit-checker-header h2{
+        font-size: 1.75rem;
+    }
+
+    .credit-feature-card{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .credit-window-body{
+        padding: 16px;
+    }
+
+    .credit-course-row{
+        grid-template-columns: 20px 1fr 24px;
+        font-size: 0.9rem;
+    }
+}
+
+.credit-checker-visual{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.credit-preview-window{
+    width: 100%;
+    max-width: 560px;
+    background: #fff;
+    border: 1px solid rgba(243,111,33,0.10);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+}
+
+.credit-preview-topbar{
+    display: flex;
+    gap: 8px;
+    padding: 14px 16px;
+    background: #f8efe6;
+    border-bottom: 1px solid rgba(243,111,33,0.08);
+}
+
+.credit-preview-topbar span{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e6a86f;
+}
+
+.credit-preview-body{
+    padding: 18px;
+    background: linear-gradient(135deg, #fffdfb 0%, #fdf7f0 100%);
+}
+
+.credit-preview-title{
+    text-align: center;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 14px;
+}
+
+.credit-preview-controls{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.credit-preview-select,
+.credit-preview-search{
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 0.78rem;
+    color: #888;
+}
+
+.credit-preview-summary{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.preview-summary-box{
+    background: #fff;
+    border: 1px solid rgba(243,111,33,0.10);
+    border-radius: 12px;
+    padding: 10px 8px;
+    text-align: center;
+}
+
+.preview-summary-box small{
+    display: block;
+    font-size: 0.68rem;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+.preview-summary-box strong{
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+.preview-summary-box.active{
+    background: linear-gradient(135deg, #f36f21, #f5a14c);
+}
+
+.preview-summary-box.active small,
+.preview-summary-box.active strong{
+    color: #fff;
+}
+
+.preview-summary-box.status strong{
+    color: #f36f21;
+    font-size: 0.9rem;
+}
+
+.credit-preview-progress{
+    width: 100%;
+    height: 10px;
+    background: #ececec;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.credit-preview-progress-fill{
+    width: 12%;
+    height: 100%;
+    background: linear-gradient(90deg, #f36f21, #f5a14c);
+    border-radius: 999px;
+}
+
+.credit-preview-lists{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.preview-list-card{
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 14px;
+    padding: 12px;
+    min-height: 180px;
+}
+
+.preview-list-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.preview-list-header b{
+    color: #888;
+    font-size: 0.72rem;
+}
+
+.preview-course-item{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid rgba(243,111,33,0.10);
+    border-radius: 12px;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+.preview-course-item.selected{
+    background: #fff7ef;
+    border-color: rgba(243,111,33,0.18);
+}
+
+.preview-course-code{
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.preview-course-name{
+    font-size: 0.78rem;
+    color: #444;
+    line-height: 1.4;
+    margin-bottom: 3px;
+}
+
+.preview-course-meta{
+    font-size: 0.68rem;
+    color: #999;
+}
+
+.preview-course-credit{
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #f36f21;
+    white-space: nowrap;
+    padding-top: 2px;
+}
+
+@media (max-width: 1100px){
+    .credit-preview-window{
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px){
+    .credit-preview-controls{
+        grid-template-columns: 1fr;
+    }
+
+    .credit-preview-summary{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .credit-preview-lists{
+        grid-template-columns: 1fr;
+    }
+}
+
+.credit-checker-visual{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.credit-preview-window{
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    background: #fff;
+    border: 1px solid rgba(243,111,33,0.10);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+}
+
+.credit-floating-badge{
+    position: absolute;
+    right: -14px;
+    bottom: -16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid rgba(243,111,33,0.10);
+    border-radius: 999px;
+    padding: 14px 22px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+    color: #22334d;
+    font-weight: 700;
+    z-index: 5;
+    white-space: nowrap;
+}
+
+.credit-floating-badge i{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f36f21, #f5a14c);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+@media (max-width: 1100px){
+    .credit-floating-badge{
+        right: 12px;
+        bottom: 12px;
+        padding: 12px 18px;
+    }
+}
+
+@media (max-width: 768px){
+    .credit-floating-badge{
+        right: 10px;
+        bottom: 10px;
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+
+    .credit-floating-badge i{
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 520px){
+    .credit-floating-badge{
+        right: 8px;
+        bottom: 8px;
+        padding: 9px 12px;
+        gap: 10px;
+        font-size: 0.88rem;
+    }
+
+    .credit-floating-badge i{
+        width: 32px;
+        height: 32px;
+        font-size: 0.82rem;
+    }
+}
